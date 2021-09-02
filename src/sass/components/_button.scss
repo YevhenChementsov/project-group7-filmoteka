@@ -1,0 +1,23 @@
+.button {
+  min-width: 136px;
+  padding: 13px 10px;
+
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.33;
+
+  color: var(--primaryTextColor);
+  border: 1px solid var(--primaryTextColor);
+  border-radius: 5px;
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  &--active {
+    background-color: var(--accentColor);
+    color: var(--primaryTextColor);
+  }
+  &--secondary {
+    color: var(--secondaryTextColor);
+  }
+}
