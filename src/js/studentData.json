@@ -5,5 +5,12 @@
         "role": "Team Lead",
         "urlLinkedin":"https://www.linkedin.com/in/pavlo-oliinyk-7565b1211/",
         "urlGithub":"https://github.com/PavloOliinyk"
+    },
+    {
+        "id":"2",
+        "name":"Viusal Rahmanov",
+        "role": "Developer",
+        "urlLinkedin":"https://www.linkedin.com/in/вюсал-рахманов-94031b210",
+        "urlGithub":"https://github.com/Rahmanov-Viusal"
     }
    ]
