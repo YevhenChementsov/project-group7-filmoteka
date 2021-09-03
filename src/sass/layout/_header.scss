@@ -101,6 +101,7 @@
     }
 
     a {
+      text-decoration: none;
       font-family: Roboto;
       font-weight: 500;
       font-size: 12px;
@@ -119,6 +120,10 @@
     border-bottom: 0.5px solid #ffffff;
     display: flex;
     justify-content: space-between;
+    @media screen and (min-width: 768px) {
+      margin: 0 auto;
+      width: 336px;
+    }
 
     input {
       border: none;
@@ -171,6 +176,10 @@
     align-items: center;
     margin-bottom: 32px;
 
+    @media (min-width: 767px) {
+      justify-content: center;
+    }
+
     .header.library & {
       display: flex;
     }
@@ -196,6 +205,12 @@
           background: #ffffff;
           border-color: #ff6b01;
           color: #ff6b01;
+        }
+      }
+
+      @media (min-width: 767px) {
+        &:last-child {
+          margin-left: 15px;
         }
       }
     }
