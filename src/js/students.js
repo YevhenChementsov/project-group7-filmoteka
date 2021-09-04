@@ -1,27 +1,34 @@
 import students from './studentData.json';
 import studentsTemplate from '../templates/students-modal.hbs';
-import * as basicLightbox from 'basiclightbox';
 
 const refs = {
   studentGoit: document.querySelector('.text-company-link'),
-  backdrop: document.querySelector('[data-modal]'),
-  modal: document.querySelector('.modal-students'),
+  backdrop: document.querySelector('.backdrop-team'),
+  team: document.querySelector('.team-modal'),
+  btnClose: document.querySelector('.modal-close-btn'),
 };
 
-const markupStudentsModal = studentsTemplate(students);
-const instance = basicLightbox.create(markupStudentsModal);
-
 refs.studentGoit.addEventListener('click', onOpenModal);
+refs.btnClose.addEventListener('click', onCloseModal);
+
+renderTeamModal(students);
 
 function onOpenModal() {
-  instance.show();
-
   window.addEventListener('keydown', onCloseModal);
+  refs.backdrop.classList.remove('is-hidden');
+  document.body.classList.add('modal-open');
+}
 
-  function onCloseModal(event) {
-    if (event.code === 'Escape') {
-      instance.close();
-      window.removeEventListener('keydown', onCloseModal);
-    }
+function onCloseModal(event) {
+  window.onscroll = function () {
+    return false;
+  };
+  refs.backdrop.classList.add('is-hidden');
+  if (event.code === 'Escape') {
+    window.removeEventListener('keydown', onCloseModal);
   }
+}
+function renderTeamModal(data) {
+  const markup = studentsTemplate(data);
+  refs.team.insertAdjacentHTML('beforeend', markup);
 }
