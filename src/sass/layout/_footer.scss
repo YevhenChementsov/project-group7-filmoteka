@@ -1,0 +1,152 @@
+.footer {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background-color: var(--bgFooterColor);
+}
+#anim {
+  display: inline-block;
+}
+.footer-lisense {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  color: var(--informationColor);
+  font-size: 14px;
+  line-height: 1.14;
+
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    line-height: 1.18;
+  }
+}
+
+.lisence {
+  margin: 0 0 10px 0;
+
+  @media screen and (min-width: 768px) {
+    margin: 0 3px 0 0;
+  }
+}
+
+.lisense-common {
+  margin: 0;
+  display: inline-block;
+}
+
+.lisense-link,
+.text-company-link {
+  margin: 0;
+  text-decoration: underline;
+  color: var(--informationColor);
+  cursor: pointer;
+  transition: 0.5s;
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    transform: scale(1.1);
+    color: var(--btn-accent-color);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .footer-lisense {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+  }
+}
+
+.favorite {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 50%;
+  // background: rgba(204, 169, 44, 0.301);
+  cursor: pointer;
+  box-shadow: 0 0 0 rgba(204, 169, 44, 0.4);
+  animation: pulse 1s infinite;
+  margin: 0px;
+  padding: 0px;
+}
+.favorite:hover {
+  animation: none;
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 rgba(204, 169, 44, 0.4);
+  }
+  70% {
+    -webkit-box-shadow: 0 0 0 12px rgba(204, 169, 44, 0);
+  }
+  100% {
+    -webkit-box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
+  }
+}
+@keyframes pulse {
+  0% {
+    -moz-box-shadow: 0 0 0 0 rgba(204, 169, 44, 0.4);
+    box-shadow: 0 0 0 0 rgba(204, 169, 44, 0.4);
+    transform: scale(1);
+  }
+  70% {
+    -moz-box-shadow: 0 0 0 12px rgba(204, 169, 44, 0);
+    box-shadow: 0 0 0 10px rgba(204, 169, 44, 0);
+    transform: scale(1.3);
+  }
+  100% {
+    -moz-box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
+    box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
+    transform: scale(1);
+  }
+}
+
+.favorite-icon {
+  width: 16px;
+  height: 14px;
+}
+
+.copyright-accent {
+  color: var(--accentColor);
+  font-weight: 600;
+}
+.copyright-logo {
+  color: var(--secondaryTextColor);
+  font-weight: 600;
+  margin-right: -4px;
+  background-color: transparent;
+}
+
+.tooltip {
+  position: relative;
+  border-radius: 100%;
+  color: var(--primaryTextColor);
+  padding: 0px 4px;
+}
+
+.tooltip:before,
+.tooltip:after {
+  position: absolute;
+  content: '';
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+@keyframes shake {
+  0% {
+    transform: rotate(2deg);
+  }
+  50% {
+    transform: rotate(-3deg);
+  }
+  70% {
+    transform: rotate(3deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+#anim:hover {
+  animation: shake 500ms ease-in-out forwards;
+}

@@ -5,9 +5,11 @@
 @import './utils/vissually-hidden';
 
 @import './components/button';
-// @import './components/title';
-// @import './components/subtitle';
+@import './components/pagination';
 
 @import './layout/header';
 @import './layout/cards';
 @import './layout/footer';
+
+@import './layout/modal';
+@import './layout/students';
