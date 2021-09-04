@@ -38,9 +38,7 @@
     z-index: 0;
   }
 
-  &__content,
-  &__search,
-  &__actions {
+  .container {
     position: relative;
     z-index: 1;
   }
