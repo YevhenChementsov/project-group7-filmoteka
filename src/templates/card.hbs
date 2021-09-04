@@ -1,0 +1,29 @@
+{{#each this}}
+  <li class="js-movie__item grid-item">
+
+    <img 
+      class="js-movie__image"
+      loading="lazy" 
+      src="https://image.tmdb.org/t/p/original{{poster_path}}" 
+      alt={{title}} 
+      data-id={{id}}>
+
+    <h2 
+      class="js-movie__title grid-title" 
+      data-id={{id}}>{{original_title}}</h2>
+
+    <ul class="js-movie__genre">
+      {{#each genres}}
+        <li class="js-movie__genre--list grid-genre">
+          {{genres.name}}{{#unless @last}}
+          {{/unless}}
+        </li>
+      {{/each}}
+    </ul>
+
+    <p class="movie__year grid-year">| {{release_date}}</p>
+
+  </li>
+{{/each}}
+
+
