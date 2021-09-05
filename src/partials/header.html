@@ -1,5 +1,27 @@
 <div class="header">
-  <div class="container">
+  <div class="container toolbar">
+    <div class="theme__switch">
+      <svg class="theme__switch-icon" role="img" aria-label="Иконка солнца">
+        <use href="./images/sprite.svg#sun"></use>
+      </svg>
+
+      <div class="theme__switch-control">
+        <input
+          class="theme__switch-toggle"
+          type="checkbox"
+          name="theme"
+          id="theme__switch-toggle"
+          aria-label="Переключить между тёмной и светлой темой"
+        />
+        <label aria-hidden="true" class="theme__switch-track" for="theme__switch-toggle"> </label>
+        <div aria-hidden="true" class="theme__switch-marker"></div>
+      </div>
+
+      <svg class="theme__switch-icon" aria-label="Иконка луны">
+        <use href="./images/sprite.svg#moon"></use>
+      </svg>
+    </div>
+
     <div class="header__content">
       <div class="header__logo">
         <a href="#">
