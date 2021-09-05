@@ -2,9 +2,9 @@ import students from './studentData.json';
 import studentsTemplate from '../templates/students-modal.hbs';
 import Refs from './refs';
 
-refs.studentGoit.addEventListener('click', onOpenModal);
-refs.btnClose.addEventListener('click', onCloseModal);
-refs.backdrop.addEventListener('click', onCloseModalBackdrop);
+Refs.studentGoit.addEventListener('click', onOpenModal);
+Refs.btnClose.addEventListener('click', onCloseModal);
+Refs.backdrop.addEventListener('click', onCloseModalBackdrop);
 
 Refs.studentGoit.addEventListener('click', onOpenModal);
 Refs.btnClose.addEventListener('click', onCloseModal);
@@ -19,7 +19,7 @@ function onOpenModal() {
 
 function onCloseModal(event) {
   document.body.classList.remove('modal-open');
-  refs.backdrop.classList.add('is-hidden');
+  Refs.backdrop.classList.add('is-hidden');
 
   window.onscroll = function () {
     return false;
