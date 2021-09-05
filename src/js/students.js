@@ -21,9 +21,6 @@ function onCloseModal(event) {
   document.body.classList.remove('modal-open');
   Refs.backdrop.classList.add('is-hidden');
 
-  window.onscroll = function () {
-    return false;
-  };
   Refs.backdrop.classList.add('is-hidden');
   if (event.code === 'Escape') {
     window.removeEventListener('keydown', onCloseModal);
