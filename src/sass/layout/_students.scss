@@ -1,16 +1,65 @@
+.modal-close-btn {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 10px;
+  right: 10px;
+  z-index: 100;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-bottom: 8px;
+
+  padding: 0;
+  // border-color: var();
+  border-radius: 50%;
+
+  background-color: var(--primaryTextColor);
+  transition: background-color 250ms linear;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 2px;
+  }
+  @media screen and (min-width: 1064px) {
+    margin-bottom: 10px;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: var(--accentColor);
+  }
+}
+.modal-close-btn__icon {
+  fill: var(--secondaryTextColor);
+  transition: fill 250ms linear;
+
+  .modal-close-btn:hover &,
+  .modal-close-btn:focus & {
+    fill: var(--primaryTextColor);
+  }
+}
+
+.team-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .students-container {
-  width: 300px;
-  padding: 10px;
+  width: 100%;
+  padding: 30px;
   overflow: scroll;
   border-radius: 30px;
   border: 2px solid var(--accentColor);
   background: linear-gradient(
-      45deg,
-      rgb(207, 154, 184) 26%,
-      rgb(86, 181, 184) 100%,
-      rgb(208, 242, 237) 100%
-    )
-    fixed;
+    45deg,
+    rgb(207, 154, 184) 26%,
+    rgb(86, 181, 184) 100%,
+    rgb(208, 242, 237) 100%
+  );
 }
 
 .students-list {
@@ -54,7 +103,7 @@
 }
 
 .photo-3 {
-  //   background-image: url('../');
+  background-image: url('../images/team/alexander_tkachuk.jpeg');
 }
 
 .photo-4 {
