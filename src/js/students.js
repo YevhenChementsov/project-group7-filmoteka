@@ -4,6 +4,10 @@ import Refs from './refs';
 
 Refs.studentGoit.addEventListener('click', onOpenModal);
 Refs.btnClose.addEventListener('click', onCloseModal);
+Refs.backdrop.addEventListener('click', onCloseModalBackdrop);
+
+Refs.studentGoit.addEventListener('click', onOpenModal);
+Refs.btnClose.addEventListener('click', onCloseModal);
 
 renderTeamModal(students);
 
@@ -14,12 +18,17 @@ function onOpenModal() {
 }
 
 function onCloseModal(event) {
-  window.onscroll = function () {
-    return false;
-  };
+  document.body.classList.remove('modal-open');
+  Refs.backdrop.classList.add('is-hidden');
+
   Refs.backdrop.classList.add('is-hidden');
   if (event.code === 'Escape') {
     window.removeEventListener('keydown', onCloseModal);
+  }
+}
+function onCloseModalBackdrop(event) {
+  if (event.target === event.currentTarget) {
+    onCloseModal();
   }
 }
 function renderTeamModal(data) {
