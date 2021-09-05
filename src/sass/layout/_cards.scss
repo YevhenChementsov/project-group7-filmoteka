@@ -14,16 +14,21 @@
 
   &__item {
     position: relative;
+    cursor: pointer;
+    transition: transform .25s cubic-bezier(.4,0,.2,1),box-shadow .25s cubic-bezier(.4,0,.2,1);
+
+    &:hover,
+		&:focus {
+			box-shadow: 0px 0px 25px 5px rgba(0, 0, 0, 0.35);
+      transform: scale(1.04);
+		}
   }
 
   &__image {
-    position: absolute;
-    top: 0;
-    left: 0;
     object-fit: cover;
-
     width: 100%;
-    height: 100%;
+    height: 398px;
+    border-radius: 5px;
   }
 
   &__title {
@@ -34,17 +39,11 @@
     color: #000;
   }
 
-  &__genre,
-  &__year {
+  &__genre {
     display: inline-block;
     font-size: 12px;
     line-height: 1.33;
     color: #ff6b08;
-  }
-
-  &__genre--list {
-    display: flex;
-    justify-content: flex-start;
   }
 }
 
@@ -53,7 +52,6 @@
   grid-template-columns: repeat(1, 280px);
   gap: 20px;
   justify-content: center;
-  align-items: center;
   @media screen and (min-width: 768px) {
     grid-template-columns: repeat(2, 294px);
     grid-gap: 30px;
