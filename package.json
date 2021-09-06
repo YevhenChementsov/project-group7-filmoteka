@@ -19,7 +19,9 @@
     "url": "https://github.com/pavlooliinyk/project-group7-filmoteka/issues"
   },
   "devDependencies": {
-    "material-design-icons": "^3.0.1",
+    "@glidejs/glide": "^3.4.1",
+    "basiclightbox": "^5.0.4",
+    "lodash.debounce": "^4.0.8",
     "parcel-bundler": "^1.12.5",
     "parcel-plugin-handlebars-precompile": "^1.0.2",
     "parcel-plugin-nuke-dist": "^1.0.1",
