@@ -1,4 +1,4 @@
-.modal-open{
+.modal-open {
   overflow: hidden;
 }
 .modal-close-btn {
@@ -8,6 +8,7 @@
   top: 10px;
   right: 10px;
   z-index: 100;
+  cursor: pointer;
 
   display: flex;
   align-items: center;
@@ -18,7 +19,7 @@
   padding: 0;
   // border-color: var();
   border-radius: 50%;
-  border:none;
+  border: none;
 
   background-color: var(--primaryTextColor);
   transition: background-color 250ms linear;
@@ -53,7 +54,7 @@
 }
 
 .students-container {
-  min-width: 282px;
+  width: 100%;
   padding: 30px;
   overflow: scroll;
   border-radius: 30px;

@@ -1,15 +1,4 @@
 import Refs from './refs';
-// const Refs = {
-//   body: document.querySelector('body'),
-
-//   footer: document.querySelector('.footer'),
-
-//   themeSwitcher: document.querySelector('.theme__switch-toggle'),
-//   copyrightLogo: document.querySelector('.copyright-logo'),
-//   sliderWrapper: document.querySelector('.slider-wrapper'),
-//   sliderWrappeBtnLeft: document.querySelector('.glide__arrow--left'),
-//   sliderWrappeBtnRight: document.querySelector('.glide__arrow--right'),
-// };
 
 const Theme = {
   LIGHT: 'light-theme',
