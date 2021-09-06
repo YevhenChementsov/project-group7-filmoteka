@@ -19,6 +19,7 @@
     "url": "https://github.com/pavlooliinyk/project-group7-filmoteka/issues"
   },
   "devDependencies": {
+    "@glidejs/glide": "^3.4.1",
     "basiclightbox": "^5.0.4",
     "lodash.debounce": "^4.0.8",
     "parcel-bundler": "^1.12.5",
