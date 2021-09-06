@@ -4,7 +4,7 @@ const Refs = {
   backdrop: document.querySelector('.backdrop-team'),
   team: document.querySelector('.team-modal'),
   btnClose: document.querySelector('.modal-close-btn'),
-  movieItems: document.querySelectorAll('.js-movie__item'),
+  movieItems: document.querySelectorAll('.grid-item'),
   backdropModalCard: document.getElementById('backdrop'),
   movieModal: document.querySelector('.modal-card'),
 };
