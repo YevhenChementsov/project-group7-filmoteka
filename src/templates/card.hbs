@@ -5,6 +5,7 @@
       class='js-movie__image'
       loading='lazy'
       src='https://image.tmdb.org/t/p/original/{{poster_path}}'
+      onerror='this.src="../images/no-poster.jpg"'
       alt='{{title}}{{name}}'
       data-id='{{id}}'
     />
