@@ -20,14 +20,14 @@ function setCurrentPage(event) {
   }
 
   currentPage = Number(event.target.innerHTML);
-  API.currentPage = currentPage;
   event.target.classList.add('pgn-active');
 
   if (currentPage !== 1) {
     checkAvailablePaginationButtons();
   }
+    console.log(currentPage);
 
-  if (query.length) {
+    if (query.length > 0) {
     showMoviesByKeyWord(query, currentPage);
   } else {
     showPopularMoviesByDefault(currentPage);
@@ -62,7 +62,7 @@ function setPrevPageAsCurrent() {
   } else {
     showPopularMoviesByDefault(currentPage);
   }
-  findFirstFilm();
+    findFirstFilm();
 }
 
 function setNextPageAsCurrent() {
@@ -78,19 +78,22 @@ function setNextPageAsCurrent() {
     active.parentNode.nextElementSibling?.firstElementChild.classList.add('pgn-active');
   }
 
-  currentPage += 1;
+    currentPage += 1;
+    
+    checkAvailablePaginationButtons();
 
-  checkAvailablePaginationButtons();
-  if (query.length) {
+  if (query.length > 0) {
     showMoviesByKeyWord(query, currentPage);
   } else {
     showPopularMoviesByDefault(currentPage);
   }
+
   findFirstFilm();
 }
 
 function checkAvailablePaginationButtons() {
-  const paginationButtons = document.querySelectorAll('.pagination-button');
+    const paginationButtons = document.querySelectorAll('.pagination-button');
+    console.log(paginationButtons);
   let paginationButtonsArray = [...paginationButtons];
 
   if (currentPage !== Number(Refs.totalPagesButton.innerHTML)) {
