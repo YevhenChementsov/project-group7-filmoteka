@@ -4,6 +4,7 @@ const Refs = {
   backdrop: document.querySelector('.backdrop-team'),
   team: document.querySelector('.team-modal'),
   btnClose: document.querySelector('.modal-close-btn'),
+  searchError: document.querySelector('.header__search-info'),
   inputSearch: document.querySelector('.header__search-content input'),
 };
 
