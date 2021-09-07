@@ -7,6 +7,8 @@ const Refs = {
   movieItems: document.querySelectorAll('.grid-item'),
   backdropModalCard: document.getElementById('backdrop'),
   movieModal: document.querySelector('.modal-card'),
+  modalBtns: document.querySelectorAll('.button-modal'),
+  modalCardsCloseBtn: document.querySelector('.button-close'),
 };
 
 export default Refs;
