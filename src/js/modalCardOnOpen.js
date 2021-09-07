@@ -3,25 +3,22 @@ import Refs from './refs';
 import temp from '../templates/cardModal.hbs';
 import appendMoviesMarkUp from './markup';
 
-Refs.movieStorage.addEventListener(
-  'click',
-  event => {
-    event.preventDefault();
+Refs.movieStorage.addEventListener('click', event => {
+  event.preventDefault();
 
-    if (event.target.nodeName === 'IMG') {
-      openModal(event.target);
-    }
-  },
-  true,
-);
+  openModal(event.target);
+});
 
 async function openModal(target) {
+  console.dir(target);
   Refs.backdropModalCard.classList.remove('is-hidden');
-  const movies = await showPopularMoviesByDefault();
-  movies.filter(movie => {
+  const fetchedMovies = await showPopularMoviesByDefault();
+  const movieCardInfo = fetchedMovies.filter(movie => {
     if (movie.id.toString() === target.dataset.id) {
-      console.log(movie);
-      appendMoviesMarkUp(Refs.movieModal, movie, temp);
+      return movie;
     }
+    return;
   });
+
+  appendMoviesMarkUp(Refs.movieModal, movieCardInfo, temp);
 }

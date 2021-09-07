@@ -1,5 +1,5 @@
 {{#each this}}
-  <li class='js-movie__item grid-item'>
+  <li class='js-movie__item grid-item' data-id={{id}}>
 
     <img
       class='js-movie__image'
@@ -9,9 +9,11 @@
       data-id={{id}}
     />
 
-    <h2 class='js-movie__title grid-title' data-id={{id}}>{{original_title}}</h2>
+    <h2 data-id={{id}} class='js-movie__title grid-title'>{{original_title}}</h2>
 
-    <p class='js-movie__genre grid-year'>{{genre_ids}}{{#unless @last}}{{/unless}} | {{release_date}}</p>
+    <p data-id={{id}} class='js-movie__genre grid-year'>{{genre_ids}}{{#unless @last}}{{/unless}}
+      |
+      {{release_date}}</p>
 
   </li>
 {{/each}}
