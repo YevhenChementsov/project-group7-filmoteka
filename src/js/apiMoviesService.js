@@ -1,4 +1,4 @@
-import Refs from "./refs";
+import Refs from './refs';
 
 const API_KEY = '74b3d185775f996114b8f83bcbb83c33';
 const BASE_URL = 'https://api.themoviedb.org/3/';
@@ -7,6 +7,7 @@ export default class FetchMovieApi {
   constructor() {
     this.searchQuery = '';
     this.initialPage = 1;
+    this.currentPage = this.initialPage;
   }
 
   // ==========  By Genres  ==========
@@ -74,11 +75,11 @@ export default class FetchMovieApi {
   }
 
   incrementPage() {
-    this.page += 1;
+    this.currentPage += 1;
   }
 
   decrementPage() {
-    this.page -= 1;
+    this.currentPage -= 1;
   }
 
   get query() {

@@ -1,18 +1,26 @@
 import Refs from '../../refs';
-import FetchMovieApi from '../../apiMoviesService';
+import API from '../../api-instance';
 import { debounce } from 'lodash';
-import cardTemplate from '../../../templates/card';
-import appendMoviesMarkUp from '../../markup';
+import showMoviesByKeyWord from '../../showMoviesByKeyWord';
+import showPopularMoviesByDefault from '../../defaultPage';
 
-const api = new FetchMovieApi();
-
-const searchHandler = event => {
-  const currentPage = api.currentPage;
+const searchHandler = async event => {
+  const page = API.initialPage;
   const query = event.target.value;
-  api.query = query;
-  api
-    .fetchMoviesByKeyWord(query, currentPage)
-    .then(movies => appendMoviesMarkUp(Refs.movieStorage, movies, cardTemplate));
+  API.query = query;
+
+  if (!query.length) {
+    await showPopularMoviesByDefault(1);
+    return;
+  }
+
+  const movies = await showMoviesByKeyWord(query, page);
+
+  if (!movies.length) {
+    Refs.searchError.classList.add('visible');
+  } else {
+    Refs.searchError.classList.remove('visible');
+  }
 };
 
 Refs.inputSearch.addEventListener('input', debounce(searchHandler, 300));

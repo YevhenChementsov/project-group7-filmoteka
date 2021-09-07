@@ -1,12 +1,10 @@
-import Refs from './refs';
-import movieCardTmpl from '../templates/card.hbs';
-import appendMoviesMarkUp from './markup';
 import API from './api-instance';
+import Refs from './refs';
+import cardTemplate from '../templates/card';
+import appendMoviesMarkUp from './markup';
 
-const initial = API.initialPage;
-
-export default async function showPopularMoviesByDefault(page) {
-  const movies = await API.fetchTrendingMovies(page);
+export default async function showMoviesByKeyWord(query, page) {
+  const movies = (await API.fetchMoviesByKeyWord(query, page)) || [];
   const genres = await API.fetchGenres();
   const moviesWithGenres = movies.map(movie => {
     const { genre_ids } = movie;
@@ -20,7 +18,6 @@ export default async function showPopularMoviesByDefault(page) {
       ],
     };
   });
-  appendMoviesMarkUp(Refs.movieStorage, moviesWithGenres, movieCardTmpl);
+  appendMoviesMarkUp(Refs.movieStorage, moviesWithGenres, cardTemplate);
+  return moviesWithGenres;
 }
-
-showPopularMoviesByDefault(initial);

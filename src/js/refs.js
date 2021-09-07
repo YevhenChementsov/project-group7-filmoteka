@@ -19,6 +19,7 @@ const Refs = {
   sliderContainer: document.querySelector('.js-slider-container'),
   themeSwitcher: document.querySelector('.theme__switch-toggle'),
   copyrightLogo: document.querySelector('.copyright-logo'),
+  searchError: document.querySelector('.header__search-info'),
 };
 
 export default Refs;

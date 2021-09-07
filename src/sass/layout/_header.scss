@@ -164,6 +164,11 @@
     opacity: 0;
     visibility: hidden;
 
+    &.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
     .error {
       color: #ff001b;
       font-size: 14px;
