@@ -5,13 +5,13 @@
       class='js-movie__image'
       loading='lazy'
       src='https://image.tmdb.org/t/p/original/{{poster_path}}'
-      alt={{title}}
-      data-id={{id}}
+      alt='{{title}}{{name}}'
+      data-id='{{id}}'
     />
 
-    <h2 class='js-movie__title grid-title' data-id={{id}}>{{original_title}}</h2>
+    <h2 class='js-movie__title grid-title' data-id={{id}}>{{original_title}}{{original_name}}</h2>
 
-    <p class='js-movie__genre grid-year'>{{genre_ids}}{{#unless @last}}{{/unless}} | {{release_date}}</p>
+    <p class='js-movie__genre grid-year'>{{#each genres}} {{name}} {{/each}} | {{release_date}}</p>
 
   </li>
 {{/each}}
