@@ -1,26 +1,16 @@
 import Refs from './refs';
 import movieCardTmpl from '../templates/card.hbs';
 import FetchMovieApi from './apiMoviesService';
-import appendMoviesMarkUp from './markup';
+// import appendMoviesMarkUp from './markup';
 
 const movieSearch = new FetchMovieApi();
+const initial = movieSearch.initialPage;
 
-async function showPopularMoviesByDefault() {
-  const movies = await movieSearch.fetchTrendingMovies();
-  const genres = await movieSearch.fetchGenres();
-  const moviesWithGenres = movies.map(movie => {
-    const { genre_ids } = movie;
-    return {
-      ...movie,
-      genre_ids: [
-        ...genres
-          .filter(({ id }) => genre_ids.includes(id))
-          .map(({ name }) => name)
-          .slice(0, 2),
-      ],
-    };
-  });
-  appendMoviesMarkUp(Refs.movieStorage, moviesWithGenres, movieCardTmpl);
+export default async function showPopularMoviesByDefault(page) {
+  const movies = await movieSearch.fetchTrendingMovies(page);
+  const moviesMarkup = movieCardTmpl(movies);
+  Refs.movieStorage.innerHTML = moviesMarkup;
+  // appendMoviesMarkUp(Refs.movieStorage, movies, movieCardTmpl);
 }
 
-showPopularMoviesByDefault();
+showPopularMoviesByDefault(initial);
