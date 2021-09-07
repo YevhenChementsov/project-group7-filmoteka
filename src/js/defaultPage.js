@@ -8,7 +8,9 @@ const movieSearch = new FetchMovieApi();
 async function showPopularMoviesByDefault() {
   const movies = await movieSearch.fetchTrendingMovies();
   appendMoviesMarkUp(Refs.movieStorage, movies, movieCardTmpl);
-  console.log(movies);
+  return movies;
 }
 
 showPopularMoviesByDefault();
+
+export default showPopularMoviesByDefault;

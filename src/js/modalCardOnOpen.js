@@ -1,41 +1,27 @@
+import showPopularMoviesByDefault from './defaultPage';
 import Refs from './refs';
 import temp from '../templates/cardModal.hbs';
 import appendMoviesMarkUp from './markup';
-console.log(Refs.movieStorage);
 
-Refs.movieStorage.addEventListener('click', event => {
-  event.preventDefault();
-  event.stopPropagation();
-  const target = event.target;
-  console.dir(event.target);
-  if (event.target === 'LI') {
-    console.log('');
-    return;
-  }
+Refs.movieStorage.addEventListener(
+  'click',
+  event => {
+    event.preventDefault();
 
-  openModal(target);
-});
+    if (event.target.nodeName === 'IMG') {
+      openModal(event.target);
+    }
+  },
+  true,
+);
 
-function openModal() {
-  Refs.backdropModalCard.classList.remove('.is-hidden');
-  //   markupTempModal();
+async function openModal(target) {
+  Refs.backdropModalCard.classList.remove('is-hidden');
+  const movies = await showPopularMoviesByDefault();
+  movies.filter(movie => {
+    if (movie.id.toString() === target.dataset.id) {
+      console.log(movie);
+      appendMoviesMarkUp(Refs.movieModal, movie, temp);
+    }
+  });
 }
-// async function markupTempModal() {
-//   const movieSearch = new FetchMovieApi();
-//   const movies = await movieSearch;
-//   appendMoviesMarkUp(Refs.movieModal, movies, temp);
-// }
-
-// table.onclick = function (event) {
-//   let td = event.target.closest('td'); // (1)
-
-//   if (!td) return; // (2)
-
-//   if (!table.contains(td)) return; // (3)
-
-//   highlight(td); // (4)
-// };
-
-// if ($(e.target).parents().filter(menuelement).length){
-//   ...
-// }
