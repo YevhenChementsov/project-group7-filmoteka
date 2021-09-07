@@ -10,7 +10,6 @@ Refs.movieStorage.addEventListener('click', event => {
 });
 
 async function openModal(target) {
-  console.dir(target);
   Refs.backdropModalCard.classList.remove('is-hidden');
   const fetchedMovies = await showPopularMoviesByDefault();
   const movieCardInfo = fetchedMovies.filter(movie => {
