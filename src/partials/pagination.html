@@ -1,3 +1,33 @@
-<div class="container">
-  <div id="pagination" class="tui-pagination"></div>
+<div class="container pagination-container">
+<div class="pagination-wrapper">
+    <button class="prev-page-button pgn-btn">
+        <svg class="pgn-btn-icon" width="16" height="16">
+            <use href="./images/sprite.svg#arrow-left"></use>
+        </svg>
+    </button>
+    <ul class="pagination-list list">
+        <li class="pagination-list-item">
+            <button class="pagination-button pgn-btn pgn-active">1</button>
+        </li>
+        <li class="pagination-list-item">
+            <button class="pagination-button pgn-btn">2</button>
+        </li>
+        <li class="pagination-list-item">
+            <button class="pagination-button pgn-btn">3</button>
+        </li>
+        <li class="pagination-list-item">
+            <button class="pagination-button pgn-btn">4</button>
+        </li>
+        <li class="pagination-list-item">
+            <button class="pagination-button pgn-btn">5</button>
+        </li>
+    </ul>
+    <button class="dots-button pgn-btn" disabled>...</button>
+    <button class="total-button pagination-button pgn-btn">T</button>
+    <button class="next-page-button pgn-btn">
+        <svg class="pgn-btn-icon" width="16" height="16">
+            <use href="./images/sprite.svg#arrow-right"></use>
+        </svg>
+    </button>
+</div>
 </div>

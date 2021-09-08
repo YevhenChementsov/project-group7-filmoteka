@@ -1,3 +1,6 @@
+.modal-open{
+  overflow: hidden;
+}
 .modal-close-btn {
   position: absolute;
   width: 30px;
@@ -15,6 +18,7 @@
   padding: 0;
   // border-color: var();
   border-radius: 50%;
+  border:none;
 
   background-color: var(--primaryTextColor);
   transition: background-color 250ms linear;
@@ -49,7 +53,7 @@
 }
 
 .students-container {
-  width: 100%;
+  min-width: 282px;
   padding: 30px;
   overflow: scroll;
   border-radius: 30px;
@@ -107,7 +111,7 @@
 }
 
 .photo-4 {
-  //   background-image: url('../');
+  background-image: url('../images/team/yevhen_chementsov.jpg');
 }
 
 .photo-5 {

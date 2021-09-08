@@ -1,12 +1,15 @@
-const refs = {
-  body: document.querySelector('body'),
+import Refs from './refs';
+// const Refs = {
+//   body: document.querySelector('body'),
 
-  footer: document.querySelector('.footer'),
+//   footer: document.querySelector('.footer'),
 
-  themeSwitcher: document.querySelector('.theme__switch-toggle'),
-
-  copyrightLogo: document.querySelector('.copyright-logo'),
-};
+//   themeSwitcher: document.querySelector('.theme__switch-toggle'),
+//   copyrightLogo: document.querySelector('.copyright-logo'),
+//   sliderWrapper: document.querySelector('.slider-wrapper'),
+//   sliderWrappeBtnLeft: document.querySelector('.glide__arrow--left'),
+//   sliderWrappeBtnRight: document.querySelector('.glide__arrow--right'),
+// };
 
 const Theme = {
   LIGHT: 'light-theme',
@@ -17,33 +20,36 @@ const Theme = {
 // console.log(refs.modalContent);
 
 const delClassElem = () => {
-  refs.body.classList.remove(Theme.LIGHT, Theme.DARK);
-
-  refs.footer.classList.remove(Theme.LIGHT, Theme.GRAY);
-
-  refs.copyrightLogo.classList.remove(Theme.LIGHT, Theme.DARK);
+  Refs.sliderWrapper.classList.remove(Theme.LIGHT, Theme.DARK);
+  Refs.sliderWrappeBtnLeft.classList.remove(Theme.LIGHT, Theme.GRAY);
+  Refs.sliderWrappeBtnRight.classList.remove(Theme.LIGHT, Theme.GRAY);
+  Refs.body.classList.remove(Theme.LIGHT, Theme.DARK);
+  Refs.footer.classList.remove(Theme.LIGHT, Theme.GRAY);
+  Refs.copyrightLogo.classList.remove(Theme.LIGHT, Theme.DARK);
 };
 
-refs.themeSwitcher.addEventListener('change', () => {
+Refs.themeSwitcher.addEventListener('change', () => {
   delClassElem();
-  if (refs.themeSwitcher.checked) {
+  if (Refs.themeSwitcher.checked) {
     localStorage.setItem('Theme', 'darkTheme');
-    refs.body.classList.add(Theme.DARK);
 
-    refs.footer.classList.add(Theme.GRAY);
-
-    refs.copyrightLogo.classList.add(Theme.DARK);
+    Refs.sliderWrapper.classList.add(Theme.DARK);
+    Refs.sliderWrappeBtnLeft.classList.add(Theme.GRAY);
+    Refs.sliderWrappeBtnRight.classList.add(Theme.GRAY);
+    Refs.body.classList.add(Theme.DARK);
+    Refs.footer.classList.add(Theme.GRAY);
+    Refs.copyrightLogo.classList.add(Theme.DARK);
   } else {
     localStorage.setItem('Theme', 'lightTheme');
-    refs.body.classList.add(Theme.LIGHT);
+    Refs.body.classList.add(Theme.LIGHT);
   }
 });
 if (localStorage.getItem('Theme') === 'darkTheme') {
-  refs.themeSwitcher.setAttribute('checked', true);
-
-  refs.body.classList.add(Theme.DARK);
-
-  refs.footer.classList.add(Theme.GRAY);
-
-  refs.copyrightLogo.classList.add(Theme.DARK);
+  Refs.sliderWrapper.classList.add(Theme.DARK);
+  Refs.sliderWrappeBtnLeft.classList.add(Theme.GRAY);
+  Refs.sliderWrappeBtnRight.classList.add(Theme.GRAY);
+  Refs.themeSwitcher.setAttribute('checked', true);
+  Refs.body.classList.add(Theme.DARK);
+  Refs.footer.classList.add(Theme.GRAY);
+  Refs.copyrightLogo.classList.add(Theme.DARK);
 }

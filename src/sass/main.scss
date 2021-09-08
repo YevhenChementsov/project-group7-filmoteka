@@ -4,11 +4,13 @@
 @import './utils/variables';
 @import './utils/vissually-hidden';
 
+@import './components/button-to-top';
 @import './components/button';
 @import './components/pagination';
 
 @import './layout/header';
-
+@import './layout/trailers';
+@import './layout/slider';
 @import './layout/cards';
 @import './layout/footer';
 @import './layout/theme-switch';
