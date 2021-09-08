@@ -1,5 +1,5 @@
 {{#each this}}
-  <li class='js-movie__item grid-item'>
+  <li class='js-movie__item grid-item' data-id={{id}}>
 
     {{#if poster_path}}
       <img
@@ -28,16 +28,19 @@
     {{#if release_date}}
       <p class='js-movie__genre grid-year'>
         {{!-- {{#each genres}} --}}
-         {{!-- {{name}} --}}
-          {{!-- {{/each}}  --}}
-          {{genre_ids}} | {{year}}</p>
+        {{!-- {{name}} --}}
+        {{!-- {{/each}}  --}}
+        {{genre_ids}}
+        |
+        {{year}}</p>
     {{else}}
-    <p class='js-movie__genre grid-year'>
-      {{!-- {{#each genres}}
+      <p class='js-movie__genre grid-year'>
+        {{!-- {{#each genres}}
        {{name}}
         {{/each}}  --}}
-        {{genre_ids}} | "Not available!"</p>
-    {{/if}} 
-  
+        {{genre_ids}}
+        | "Not available!"</p>
+    {{/if}}
+
   </li>
 {{/each}}

@@ -23,7 +23,7 @@ export default class FetchMovieApi {
   }
 
   // ==========  By Trend  ==========
-  async fetchTrendingMovies(currentPage) {
+  async fetchTrendingMovies(currentPage = 1) {
     try {
       const url = `${BASE_URL}trending/movie/day?api_key=${API_KEY}&page=${currentPage}`;
       const response = await fetch(url);
