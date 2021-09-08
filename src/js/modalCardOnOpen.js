@@ -29,6 +29,7 @@ function closeModal(event) {
 async function openModal(target) {
   Refs.backdropModalCard.classList.remove('is-hidden');
   const fetchedMovies = await showPopularMoviesByDefault();
+  console.log(fetchedMovies);
   const movieCardInfo = fetchedMovies.filter(movie => {
     if (movie.id.toString() === target.dataset.id) {
       return movie;

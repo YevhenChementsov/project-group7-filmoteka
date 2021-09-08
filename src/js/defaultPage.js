@@ -24,6 +24,7 @@ export default async function showPopularMoviesByDefault(page) {
     };
   });
   appendMoviesMarkUp(Refs.movieStorage, moviesWithGenres, movieCardTmpl);
+  return movies;
 }
 
 showPopularMoviesByDefault(initial);

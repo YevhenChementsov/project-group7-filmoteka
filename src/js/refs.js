@@ -23,6 +23,7 @@ const Refs = {
   movieModal: document.querySelector('.modal-card'),
   modalBtns: document.querySelectorAll('.button-modal'),
   modalCardsCloseBtn: document.querySelector('.button-close'),
+  backdropModalCard: document.getElementById('backdrop'),
 };
 
 export default Refs;
