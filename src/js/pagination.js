@@ -25,7 +25,6 @@ function setCurrentPage(event) {
   if (currentPage !== 1) {
     checkAvailablePaginationButtons();
   }
-    console.log(currentPage);
 
     if (query.length > 0) {
     showMoviesByKeyWord(query, currentPage);
@@ -37,18 +36,18 @@ function setCurrentPage(event) {
 
 function setPrevPageAsCurrent() {
   const query = API.query;
-  if (currentPage <= 1) {
+    if (currentPage <= 1) {
     return;
   }
 
   if (currentPage === Number(Refs.totalPagesButton.innerHTML)) {
     return;
   }
-
+    
   if (currentPage !== 1) {
     checkAvailablePaginationButtons();
   }
-
+  
   const active = document.querySelector('.pgn-active');
   if (active) {
     active.classList.remove('pgn-active');
