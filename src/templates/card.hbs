@@ -37,7 +37,13 @@
        {{name}}
         {{/each}}  --}}
         {{genre_ids}} | "Not available!"</p>
-    {{/if}} 
+    {{/if}}
+
+    {{#if vote_average}}
+      <p class='js-movie__vote grid-vote'>{{vote}}</p>
+    {{else}}
+      <p class='js-movie__vote grid-vote'>0</p>
+    {{/if}}
   
   </li>
 {{/each}}
