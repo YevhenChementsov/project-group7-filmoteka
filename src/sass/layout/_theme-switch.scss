@@ -1,17 +1,26 @@
 /* Theme-switch */
-.light-theme {
+body.light-theme {
   background-color: var(--primaryTextColor);
-  color: var(--primaryTextColor);
+  color: var(--secondaryTextColor);
 }
 
-.dark-theme {
+body.dark-theme {
   background-color: #212121;
   color: var(--primaryTextColor);
-}
-
-.grey-background-theme {
-  box-shadow: 0 0 15px #444444;
-  background-color: rgba(21, 21, 21, 0.7);
+  .footer,
+  .glide__arrow--left,
+  .glide__arrow--right {
+    box-shadow: 0 0 15px #444444;
+    background-color: rgba(21, 21, 21, 0.7);
+  }
+  .lisence,
+  .lisense-common,
+  .copyright-logo,
+  .text-students,
+  .pagination-button {
+    // background-color: transparent;
+    color: var(--primaryTextColor);
+  }
 }
 
 .dark-theme-copyright {
