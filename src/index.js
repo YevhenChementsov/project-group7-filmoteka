@@ -7,3 +7,4 @@ import './js/defaultPage';
 import './js/theme-switch';
 import './js/slider';
 import './js/trailers';
+import './js/back-to-top-btn'
