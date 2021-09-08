@@ -4,12 +4,14 @@
 @import './utils/variables';
 @import './utils/vissually-hidden';
 
+@import './components/button-to-top';
 @import './components/button';
+
+@import './components/spinner';
 @import './components/pagination';
 
 @import './layout/header';
 @import './layout/trailers';
-
 @import './layout/slider';
 @import './layout/cards';
 @import './layout/footer';
