@@ -14,23 +14,27 @@ Refs.movieStorage.addEventListener('click', event => {
 
 Refs.modalCardsCloseBtn.addEventListener('click', event => {
   event.preventDefault();
-  closeModal(event.target);
+  closeModal(event);
 });
+Refs.backdropModalCard.addEventListener('click', closeModalByPressBackdrop);
 
 function closeModal(event) {
   Refs.backdropModalCard.classList.add('is-hidden');
-  Refs.movieModal.removeEventListener('click', never);
-  Refs.movieModal.innerHTML = '';
-  if (event.code === 'Escape') {
+  if (event.key === 27) {
     window.removeEventListener('keydown', closeModal());
   }
 }
-
+function closeModalByPressBackdrop(event) {
+  if (event.target === event.currentTarget) {
+    closeModal();
+  }
+}
 async function openModal(target) {
   Refs.backdropModalCard.classList.remove('is-hidden');
+  window.addEventListener('keydown', closeModal);
+
   const fetchedMovies = await showPopularMoviesByDefault();
-  /************************** */
-  console.log(fetchedMovies);
+
   const movieCardInfo = fetchedMovies.filter(movie => {
     if (movie.id.toString() === target.dataset.id) {
       return movie;

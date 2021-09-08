@@ -7,6 +7,7 @@ const initial = API.initialPage;
 
 export default async function showPopularMoviesByDefault(page) {
   const movies = await API.fetchTrendingMovies(page);
+
   const genres = await API.fetchGenres();
   const moviesWithGenres = movies.map(movie => {
     const { genre_ids } = movie;
