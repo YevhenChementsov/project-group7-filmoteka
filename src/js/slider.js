@@ -2,6 +2,7 @@ import Glide from '@glidejs/glide';
 import filmsCardSliderTpl from '../templates/card-films-slider.hbs';
 import trailer from './trailers';
 import Refs from './refs';
+import FetchMovieApi from './apiMoviesService';
 
 renderTrendy();
 
