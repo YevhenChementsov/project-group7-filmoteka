@@ -41,7 +41,11 @@ async function showFilmsInQueue() {
 }
 
 async function makeMoviesCardsMarkup(movies) {
-    const genres = await API.fetchGenres();
+    if (movies.length === 0) {
+        return;
+    }
+    
+    const genres = await API.fetchGenres(); 
     const moviesCardsMarkup = movies.map(movie => {
     const { genre_ids } = movie;
     return {
