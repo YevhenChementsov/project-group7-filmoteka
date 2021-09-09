@@ -30,8 +30,12 @@
 
   transition: background 250ms var(--timing-function);
 
-  &:hover:enabled {
+  &:hover {
     background: #ececec;
+  }
+
+  &:disabled {
+    pointer-events: none;
   }
 }
 .pgn-active {

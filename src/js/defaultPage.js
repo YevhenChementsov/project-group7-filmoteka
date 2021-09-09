@@ -2,6 +2,29 @@ import Refs from './refs';
 import movieCardTmpl from '../templates/card.hbs';
 import appendMoviesMarkUp from './markup';
 import API from './api-instance';
+import * as Pagination from './showMoviesByKeyWord';
+
+
+Refs.openHomepageButton.addEventListener('click', openHomepage);
+Refs.navigationButtons.addEventListener('click', isButtonActive);
+
+function openHomepage() {
+  Refs.browseLibraryButtons.style.display = 'none';
+  Refs.paginationContainer.style.display = 'flex';
+  Pagination.renewPaginationMarkup();
+  showPopularMoviesByDefault(initial);
+}
+
+function isButtonActive(event) {
+  const active = document.querySelector('.active-link');
+    console.log(active);
+
+    if (active) {
+        active.classList.remove('active-link');
+    }
+    event.target.classList.add('active-link');
+}
+
 
 const initial = API.initialPage;
 
@@ -28,3 +51,4 @@ export default async function showPopularMoviesByDefault(page) {
 }
 
 showPopularMoviesByDefault(initial);
+
