@@ -14,7 +14,7 @@ export default async function showPopularMoviesByDefault(page) {
       ...movie,
       vote: movie.vote_average,
       year: movie.release_date ? movie.release_date.split('-')[0] : movie.first_air_date.split('-')[0],
-      genre_ids: [
+      genres: [
         ...genres
           .filter(({ id }) => genre_ids.includes(id))
           .map(({ name }) => name)
@@ -23,6 +23,7 @@ export default async function showPopularMoviesByDefault(page) {
     };
   });
   appendMoviesMarkUp(Refs.movieStorage, moviesWithGenres, movieCardTmpl);
+  return movies;
 }
 
 showPopularMoviesByDefault(initial);

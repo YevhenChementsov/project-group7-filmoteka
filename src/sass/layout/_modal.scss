@@ -1,5 +1,6 @@
 .backdrop {
   position: fixed;
+  overflow: hidden;
   top: 0;
   left: 0;
 
@@ -23,6 +24,7 @@
 
 .modal {
   width: 100%;
+  height: auto;
 
   position: absolute;
   top: 50%;
@@ -89,7 +91,7 @@
     display: block;
 
     width: 100%;
-    height: auto;
+    // height: auto;
   }
   @media screen and (min-width: 768px) {
     display: flex;
@@ -104,8 +106,10 @@
   color: black;
   &-tittle {
     font-weight: 500;
-    font-size: 20px;
-    line-height: 1.15;
+    font-size: 30px;
+    line-height: 1.16;
+
+    font-family: Roboto;
   }
   &-mainInfo {
     margin-top: 20px;
@@ -117,6 +121,13 @@
 
     &-items {
       margin-top: 10px;
+      &_cat {
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 1.15;
+
+        color: #8c8c8c;
+      }
     }
   }
   &-secondary--title {
@@ -138,6 +149,7 @@
   @media screen and (min-width: 768px) {
     min-width: 264px;
     margin-top: auto;
+    margin-left: 30px;
   }
 
   @media screen and (min-width: 1280px) {

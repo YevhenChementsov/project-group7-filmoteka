@@ -30,7 +30,7 @@
 
   transition: background 250ms var(--timing-function);
 
-  &:hover {
+  &:hover:enabled {
     background: #ececec;
   }
 }
@@ -52,11 +52,7 @@
   background: #f7f7f7;
   margin-right: 2px;
 }
-.prev-page-button:disabled:hover,
-.next-page-button:disabled:hover {
-  cursor: none;
-  background: #f7f7f7;
-}
+
 .dots-button {
   pointer-events: none;
 }

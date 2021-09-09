@@ -6,9 +6,6 @@ Refs.studentGoit.addEventListener('click', onOpenModal);
 Refs.btnClose.addEventListener('click', onCloseModal);
 Refs.backdrop.addEventListener('click', onCloseModalBackdrop);
 
-Refs.studentGoit.addEventListener('click', onOpenModal);
-Refs.btnClose.addEventListener('click', onCloseModal);
-
 renderTeamModal(students);
 
 function onOpenModal() {

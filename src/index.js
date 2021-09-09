@@ -8,4 +8,5 @@ import './js/theme-switch';
 import './js/slider';
 import './js/trailers';
 import './js/back-to-top-btn';
-// import './js/genres';
+import './js/genres';
+import './js/modalCardOnOpen';

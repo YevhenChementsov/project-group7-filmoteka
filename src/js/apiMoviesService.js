@@ -7,7 +7,7 @@ export default class FetchMovieApi {
   constructor() {
     this.searchQuery = '';
     this.initialPage = 1;
-    this.currentPage = this.initialPage;
+    // this.currentPage = this.initialPage;
   }
 
   // ==========  By Genres  ==========
@@ -23,11 +23,11 @@ export default class FetchMovieApi {
   }
 
   // ==========  By Trend  ==========
-  async fetchTrendingMovies(currentPage) {
+  async fetchTrendingMovies(currentPage = 1) {
     try {
       const url = `${BASE_URL}trending/movie/day?api_key=${API_KEY}&page=${currentPage}`;
       const response = await fetch(url);
-      const { results, total_pages } = await response.json();
+      const { results, total_pages} = await response.json();
       Refs.totalPagesButton.innerHTML = total_pages;
       return results;
     } catch (error) {
@@ -40,7 +40,8 @@ export default class FetchMovieApi {
     const url = `${BASE_URL}search/movie?api_key=${API_KEY}&query=${query}&language=en-US&page=${currentPage}&include_adult=false`;
     try {
       const response = await fetch(url);
-      const { results } = await response.json();
+      const { results, total_pages } = await response.json();
+      Refs.totalPagesButton.innerHTML = total_pages;
       return results;
     } catch (error) {
       console.log(error);

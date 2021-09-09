@@ -28,17 +28,17 @@
         "urlGithub":"https://github.com/YevhenChementsov"
     },
     {
-        "id":"2",
-        "name":"Viusal Rahmanov",
+        "id":"5",
+        "name":"Герасимова Евгения",
         "role": "Developer",
-        "urlLinkedin":"https://www.linkedin.com/in/вюсал-рахманов-94031b210",
-        "urlGithub":"https://github.com/Rahmanov-Viusal"
+        "urlLinkedin":"https://www.linkedin.com/in/",
+        "urlGithub":"https://github.com/zeka2021"
     },
     {
-        "id":"2",
-        "name":"Viusal Rahmanov",
+        "id":"6",
+        "name":"Andrey Marchuk",
         "role": "Developer",
-        "urlLinkedin":"https://www.linkedin.com/in/вюсал-рахманов-94031b210",
-        "urlGithub":"https://github.com/Rahmanov-Viusal"
+        "urlLinkedin":"https://www.linkedin.com/in/",
+        "urlGithub":"https://github.com/hooliganfromtroya"
     }
    ]
