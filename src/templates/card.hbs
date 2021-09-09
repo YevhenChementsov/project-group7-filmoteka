@@ -25,17 +25,25 @@
       <h2 class='js-movie__title grid-title' data-id={{id}}>"No Title"</h2>
     {{/if}}
 
-    {{#if release_date}}
-      <p class='js-movie__genre grid-year'>{{genres}} | {{year}}</p>
+    {{#if genre_ids }}
+      <p class='js-movie__genre grid-genre'>{{genres}}</p>
     {{else}}
-      <p class='js-movie__genre grid-year'>{{genres}} | "No Date"</p>
+      <p class='js-movie__genre grid-genre'>"No Genres"</p>
+    {{/if}}
+    
+      <span class="js-movie__span">|</span>
+
+    {{#if release_date}}
+      <p class='js-movie__year grid-year'>{{year}}</p>
+    {{else}}
+      <p class='js-movie__year grid-year'>"No Date"</p>
     {{/if}}
 
-    {{#if vote_average}}
+    {{!-- {{#if vote_average}}
       <p class='js-movie__vote grid-vote'>{{vote}}</p>
     {{else}}
       <p class='js-movie__vote grid-vote'>0</p>
-    {{/if}}
+    {{/if}} --}}
   
   </li>
 {{/each}}
