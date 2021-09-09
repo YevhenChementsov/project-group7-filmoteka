@@ -24,6 +24,12 @@ const Refs = {
   modalBtns: document.querySelectorAll('.button-modal'),
   modalCardsCloseBtn: document.querySelector('.button-close'),
   backdropModalCard: document.getElementById('backdrop'),
+  navigationButtons: document.querySelector('.header__navigation'),
+  openHomepageButton: document.querySelector('.open-homepage'),
+  openLibraryButton: document.querySelector('.open-library-button'),
+  browseLibraryButtons: document.querySelector('.header__actions'),
+  browseWatchedFilmsButton: document.querySelector('.watched-btn'),
+  browseFilmsInQueueButton: document.querySelector('.queue-btn'),
 };
 
 export default Refs;

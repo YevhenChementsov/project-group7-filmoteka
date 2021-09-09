@@ -30,8 +30,10 @@ export default async function showMoviesByKeyWord(query, page) {
 if (query.length > 0) {
   showMoviesByKeyWord(query, initial);
 }
-function renewPaginationMarkup() {
+
+export function renewPaginationMarkup() {
   return (Refs.paginationList.innerHTML = `<li class="pagination-list-item">
+
         <button class="pagination-button pgn-btn pgn-active first-pgn">1</button>
         </li>
         <li class="pagination-list-item">

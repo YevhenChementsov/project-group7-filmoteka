@@ -6,7 +6,7 @@ import showPopularMoviesByDefault from '../../defaultPage';
 
 const searchHandler = async event => {
   const page = API.initialPage;
-  const query = event.target.value;
+  const query = event.target.value.trim();
   API.query = query;
 
   if (!query.length) {
