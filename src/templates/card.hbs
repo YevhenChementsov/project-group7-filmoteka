@@ -14,7 +14,7 @@
         class='js-movie__image'
         loading='lazy'
         src='https://www.prokerala.com/movies/assets/img/no-poster-available.jpg'
-        alt='no-poster-available'
+        alt='No Poster Available'
         data-id='{{id}}'
       />
     {{/if}}
@@ -22,25 +22,20 @@
     {{#if original_title}}
       <h2 class='js-movie__title grid-title' data-id={{id}}>{{original_title}}{{original_name}}</h2>
     {{else}}
-      <h2 class='js-movie__title grid-title' data-id={{id}}>"Not available!"</h2>
+      <h2 class='js-movie__title grid-title' data-id={{id}}>"No Title"</h2>
     {{/if}}
 
     {{#if release_date}}
-      <p class='js-movie__genre grid-year'>
-        {{!-- {{#each genres}} --}}
-        {{!-- {{name}} --}}
-        {{!-- {{/each}}  --}}
-        {{genre_ids}}
-        |
-        {{year}}</p>
+      <p class='js-movie__genre grid-year'>{{genres}} | {{year}}</p>
     {{else}}
-      <p class='js-movie__genre grid-year'>
-        {{!-- {{#each genres}}
-       {{name}}
-        {{/each}}  --}}
-        {{genre_ids}}
-        | "Not available!"</p>
+      <p class='js-movie__genre grid-year'>{{genres}} | "No Date"</p>
     {{/if}}
 
+    {{#if vote_average}}
+      <p class='js-movie__vote grid-vote'>{{vote}}</p>
+    {{else}}
+      <p class='js-movie__vote grid-vote'>0</p>
+    {{/if}}
+  
   </li>
 {{/each}}
