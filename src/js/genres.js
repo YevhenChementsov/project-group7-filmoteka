@@ -1,44 +1,46 @@
-// function shortYear (arr) {
-//   return arr.release_date ? arr.release_date.split('-')[0] : arr.first_air_date.split('-')[0];
-// }
+import API from './api-instance';
 
-// function createGenresArray(array, genres) {
-//   return array
-//     .map(id => genres.filter(element => element.id === id))
-//     .slice(0, 3)
-//     .flat();
-// }
+const initial = API.initialPage;
+// ===========================
 
-// function createGenresFromId(array) {
-//   return array.genres
-//     .map(genre => genre.name)
-//     .slice(0, 3)
-//     .flat();
-// }
+async function getAllGenres() {
+  const allGenres = await API.fetchGenres().catch(err => console.log(err));
+  console.log(allGenres);
+  return allGenres;
+}
+getAllGenres();
 
-// function fullData(films, allGenres) {
-//   return films.map(film => {
-//     ({
-//     ...film,
-//     year: shortYear(film),
-//     genres: createGenresArray(film.genre_ids, allGenres),
-//     })
-//   });
-// }
+// ===========================
 
-// import API from './api-instance';
+async function getAllMovies () {
+  const movies = await API.fetchTrendingMovies(initial).catch(err => console.log(err));
+  console.log(movies);
+  return movies;
+}
+console.log(getAllMovies())
 
-// const initial = API.initialPage;
+// ===========================
 
-// async function getAllGenres() {
-//   let allGenres = [];
-//   const genres = await API.fetchGenres();
-//   const genresId = genres.map(genre => genre.id).flat();
-//   const genresName = genres.map(genre => genre.name).flat();
-//   console.log(genresId)
-//   console.log(genresName)
-//   allGenres.push(genres);
-//   console.log(allGenres)
-// }
+function shortYear (arr) {
+  return arr.release_date ? arr.release_date.split('-')[0] : arr.first_air_date.split('-')[0];
+}
+// ===========================
 
-// getAllGenres(initial);
+function createGenresArray(array, genres) {
+  return array
+    .map(id => genres.filter(el => el.id === id))
+    .slice(0, 2)
+    .splice(2, 0, '...Others')
+    .flat();
+}
+
+function fullData(movies, allGenres) {
+  const moviesWithGenresAndData =  movies.map(movie => {
+    ({
+    ...movie,
+    year: shortYear(movie),
+    genres: createGenresArray(movie.genre_ids, allGenres),
+    })
+  });
+  return moviesWithGenresAndData;
+}
