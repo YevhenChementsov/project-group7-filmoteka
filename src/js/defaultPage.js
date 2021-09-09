@@ -2,9 +2,8 @@ import Refs from './refs';
 import movieCardTmpl from '../templates/card.hbs';
 import appendMoviesMarkUp from './markup';
 import API from './api-instance';
-
+import showModal from './modalCardOnOpen';
 const initial = API.initialPage;
-
 export default async function showPopularMoviesByDefault(page) {
   const movies = await API.fetchTrendingMovies(page);
   const genres = await API.fetchGenres();
@@ -23,7 +22,6 @@ export default async function showPopularMoviesByDefault(page) {
     };
   });
   appendMoviesMarkUp(Refs.movieStorage, moviesWithGenres, movieCardTmpl);
-  return movies;
+  showModal(moviesWithGenres);
 }
-
 showPopularMoviesByDefault(initial);
