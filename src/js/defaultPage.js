@@ -2,11 +2,13 @@ import Refs from './refs';
 import movieCardTmpl from '../templates/card.hbs';
 import appendMoviesMarkUp from './markup';
 import API from './api-instance';
-import showModal from './modalCardOnOpen';
+import ShowModal from './modalCardOnOpen';
 // import * as Pagination from './showMoviesByKeyWord';
 
 Refs.openHomepageButton.addEventListener('click', openHomepage);
 Refs.navigationButtons.addEventListener('click', isButtonActive);
+
+const modal = new ShowModal();
 
 function openHomepage() {
   Refs.browseLibraryButtons.style.display = 'none';
@@ -46,7 +48,10 @@ export default async function showPopularMoviesByDefault(page) {
       ],
     };
   });
+
   appendMoviesMarkUp(Refs.movieStorage, moviesWithGenres, movieCardTmpl);
-  showModal(moviesWithGenres);
+  modal.setListener();
+  modal.setMovies(moviesWithGenres);
+  modal.removeListener();
 }
 showPopularMoviesByDefault(initial);

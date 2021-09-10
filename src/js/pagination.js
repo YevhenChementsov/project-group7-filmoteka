@@ -49,7 +49,7 @@ function setPrevPageAsCurrent() {
   if (currentPage === Number(Refs.totalPagesButton.innerHTML)) {
     return;
   }
-  
+
   if (currentPage !== 1) {
     checkAvailablePaginationButtons();
   }
@@ -67,9 +67,9 @@ function setPrevPageAsCurrent() {
   } else {
     showPopularMoviesByDefault(currentPage);
   }
-    isPrevPageDisabled();
-    isNextPageDisabled();
-    findFirstFilm();
+  isPrevPageDisabled();
+  isNextPageDisabled();
+  findFirstFilm();
 }
 
 function setNextPageAsCurrent() {
@@ -142,7 +142,7 @@ function createPrevPaginationButtons() {
 }
 
 function findFirstFilm() {
-  const firstFilm = Refs.movieList.firstElementChild;
+  const firstFilm = Refs.movieStorage.firstElementChild;
   if (firstFilm) {
     firstFilm.scrollIntoView({
       block: 'end',
@@ -153,9 +153,11 @@ function findFirstFilm() {
 
 function isPrevPageDisabled() {
   return currentPage === 1 || currentPage === Number(Refs.totalPagesButton.innerHTML)
-    ? Refs.prevPageButton.disabled = true : Refs.prevPageButton.disabled = false;
+    ? (Refs.prevPageButton.disabled = true)
+    : (Refs.prevPageButton.disabled = false);
 }
 function isNextPageDisabled() {
   return currentPage === Number(Refs.totalPagesButton.innerHTML)
-    ? Refs.nextPageButton.disabled = true : Refs.nextPageButton.disabled = false;
+    ? (Refs.nextPageButton.disabled = true)
+    : (Refs.nextPageButton.disabled = false);
 }
