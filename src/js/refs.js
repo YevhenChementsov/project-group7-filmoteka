@@ -30,6 +30,7 @@ const Refs = {
   browseLibraryButtons: document.querySelector('.header__actions'),
   browseWatchedFilmsButton: document.querySelector('.watched-btn'),
   browseFilmsInQueueButton: document.querySelector('.queue-btn'),
+  usersFilmsLibrary: document.querySelector('.js-library__list'),
 };
 
 export default Refs;
