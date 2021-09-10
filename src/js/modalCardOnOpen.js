@@ -59,11 +59,11 @@ export default class ShowModal {
       return;
     });
     if (e.target.dataset.value === 'watched') {
-      e.target.textContent = 'Added to Watched!';
+      e.target.textContent = 'Delete from Watched';
       e.target.style.backgroundColor = 'yellow';
       this.addMoviesToWatchedLibrary(...movieCardInfo);
     } else if (e.target.dataset.value === 'queue') {
-      e.target.textContent = 'Added to Watched!';
+      e.target.textContent = 'Delete from queue';
       e.target.style.backgroundColor = 'yellow';
       this.addMoviesToQueueLibrary(...movieCardInfo);
     }
