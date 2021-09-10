@@ -14,6 +14,7 @@ export default function showModal(movies) {
     Refs.backdropModalCard.addEventListener('click', closeModalByClickBackdrop);
     window.addEventListener('keydown', onModalPress);
     Refs.movieModal.addEventListener('click', addMovieToLibrary);
+    document.body.classList.add('open-modal');
     const fetchedMovies = movies;
     const movieCardInfo = fetchedMovies.filter(movie => {
       if (movie.id.toString() === target.dataset.id) {
@@ -58,11 +59,13 @@ export default function showModal(movies) {
     }
     Refs.backdropModalCard.classList.add('is-hidden');
     Refs.backdropModalCard.removeEventListener('click', closeModalByClickBackdrop);
+    document.body.classList.remove('open-modal');
   }
   function closeModalBeEscAndCloseBtn() {
     Refs.backdropModalCard.classList.add('is-hidden');
     Refs.modalCardsCloseBtn.removeEventListener('click', closeModalBeEscAndCloseBtn);
     window.removeEventListener('keydown', onModalPress);
+    document.body.classList.remove('open-modal');
   }
   function onModalPress(event) {
     if (event.key === 'Escape') {

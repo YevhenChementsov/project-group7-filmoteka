@@ -9,7 +9,7 @@
 
   z-index: 100;
 
-  background-color: rgba(180, 180, 209, 0.05);
+  background-color: rgba(180, 180, 209, 0.7);
 
   transition: all var(--transition-property);
 }
@@ -27,6 +27,7 @@
 .modal {
   width: 100%;
   height: auto;
+  overflow-y: auto;
 
   position: absolute;
   top: 50%;
@@ -40,15 +41,18 @@
 
   @media screen and (min-width: 320px) {
     max-width: 280px;
+    height: 85vh;
   }
 
   @media screen and (min-width: 768px) {
     width: 100%;
     max-width: 618px;
+    height: 85vh;
   }
 
   @media screen and (min-width: 1280px) {
     max-width: 882px;
+    height: 85vh;
   }
 }
 .button-close {
@@ -194,4 +198,8 @@
   @media screen and (min-width: 1280px) {
     width: 136px;
   }
+}
+
+.open-modal {
+  overflow: hidden;
 }
