@@ -3,7 +3,7 @@ import movieCardTmpl from '../templates/card.hbs';
 import appendMoviesMarkUp from './markup';
 import API from './api-instance';
 import showModal from './modalCardOnOpen';
-import * as Pagination from './showMoviesByKeyWord';
+// import * as Pagination from './showMoviesByKeyWord';
 
 Refs.openHomepageButton.addEventListener('click', openHomepage);
 Refs.navigationButtons.addEventListener('click', isButtonActive);
@@ -11,8 +11,10 @@ Refs.navigationButtons.addEventListener('click', isButtonActive);
 function openHomepage() {
   Refs.browseLibraryButtons.style.display = 'none';
   Refs.paginationContainer.style.display = 'flex';
-  Pagination.renewPaginationMarkup();
-  showPopularMoviesByDefault(initial);
+  Refs.movieStorage.style.display = 'grid';
+  Refs.usersFilmsLibrary.style.display = 'none';
+  // Pagination.renewPaginationMarkup();
+  // showPopularMoviesByDefault(initial);
 }
 
 function isButtonActive(event) {
