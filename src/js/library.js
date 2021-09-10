@@ -11,59 +11,58 @@ Refs.browseFilmsInQueueButton.addEventListener('click', showFilmsInQueue);
 const fetchGenres = API.fetchGenres();
 
 function toggleActiveClass(event) {
-    const active = document.querySelector('.active');
-    console.log(active);
+  const active = document.querySelector('.active');
 
-    if (active) {
-        active.classList.remove('active');
-    }
-    event.target.classList.add('active');
+  if (active) {
+    active.classList.remove('active');
+  }
+  event.target.classList.add('active');
 }
 
 async function makeLibraryVisible() {
-    Refs.browseLibraryButtons.style.display = 'flex';
-    Refs.paginationContainer.style.display = 'none';
-    Refs.movieStorage.style.display = 'none';
-    Refs.usersFilmsLibrary.style.display = 'grid';
-    await showWatchedFilms();
+  Refs.browseLibraryButtons.style.display = 'flex';
+  Refs.paginationContainer.style.display = 'none';
+  Refs.movieStorage.style.display = 'none';
+  Refs.usersFilmsLibrary.style.display = 'grid';
+  await showWatchedFilms();
 }
 
 async function showWatchedFilms() {
-    const savedWatchedMovies = localStorage.getItem('watchedMovies');
-    
-    if (savedWatchedMovies.length === 0) {
-        return;
-    }
+  const savedWatchedMovies = localStorage.getItem('watchedMovies');
 
-    const parsedWatchedMovies = JSON.parse(savedWatchedMovies);
-    
-    const watchedMoviesMarkup = await makeMoviesCardsMarkup(parsedWatchedMovies);
-    appendMoviesMarkUp(Refs.usersFilmsLibrary, watchedMoviesMarkup, movieCardTmpl);
+  if (savedWatchedMovies.length === 0) {
+    return;
+  }
+
+  const parsedWatchedMovies = JSON.parse(savedWatchedMovies);
+
+  const watchedMoviesMarkup = await makeMoviesCardsMarkup(parsedWatchedMovies);
+  appendMoviesMarkUp(Refs.usersFilmsLibrary, watchedMoviesMarkup, movieCardTmpl);
 }
 
 async function showFilmsInQueue() {
-    const savedFilmsInQueue = localStorage.getItem('queueMovies');
+  const savedFilmsInQueue = localStorage.getItem('queueMovies');
 
-    if (savedFilmsInQueue.length === 0) {
-        return;
-    }
+  if (savedFilmsInQueue.length === 0) {
+    return;
+  }
 
-    const parsedFilmsInQueue = JSON.parse(savedFilmsInQueue);
+  const parsedFilmsInQueue = JSON.parse(savedFilmsInQueue);
 
-    const filmsInQueueMarkup = await makeMoviesCardsMarkup(parsedFilmsInQueue);
-    appendMoviesMarkUp(Refs.usersFilmsLibrary, filmsInQueueMarkup, movieCardTmpl);
+  const filmsInQueueMarkup = await makeMoviesCardsMarkup(parsedFilmsInQueue);
+  appendMoviesMarkUp(Refs.usersFilmsLibrary, filmsInQueueMarkup, movieCardTmpl);
 }
 
 async function makeMoviesCardsMarkup(movies) {
-    if (movies.length === 0) {
-        return;
-    }
+  if (movies.length === 0) {
+    return;
+  }
 
-    const genres = await fetchGenres;
-    const moviesCardsMarkup = movies.map(movie => {
-        if (!movie) {
-            return;
-        }
+  const genres = await fetchGenres;
+  const moviesCardsMarkup = movies.map(movie => {
+    if (!movie) {
+      return;
+    }
     const { genre_ids } = movie;
     return {
       ...movie,
@@ -77,6 +76,6 @@ async function makeMoviesCardsMarkup(movies) {
           .slice(0, 3),
       ],
     };
-    });
-    return moviesCardsMarkup;
+  });
+  return moviesCardsMarkup;
 }
