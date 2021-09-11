@@ -5,23 +5,22 @@ const initial = API.initialPage;
 
 async function getAllGenres() {
   const allGenres = await API.fetchGenres().catch(err => console.log(err));
-  console.log(allGenres);
+
   return allGenres;
 }
 getAllGenres();
 
 // ===========================
 
-async function getAllMovies () {
+async function getAllMovies() {
   const movies = await API.fetchTrendingMovies(initial).catch(err => console.log(err));
-  console.log(movies);
+
   return movies;
 }
-console.log(getAllMovies())
 
 // ===========================
 
-function shortYear (arr) {
+function shortYear(arr) {
   return arr.release_date ? arr.release_date.split('-')[0] : arr.first_air_date.split('-')[0];
 }
 // ===========================
@@ -35,12 +34,12 @@ function createGenresArray(array, genres) {
 }
 
 function fullData(movies, allGenres) {
-  const moviesWithGenresAndData =  movies.map(movie => {
+  const moviesWithGenresAndData = movies.map(movie => {
     ({
-    ...movie,
-    year: shortYear(movie),
-    genres: createGenresArray(movie.genre_ids, allGenres),
-    })
+      ...movie,
+      year: shortYear(movie),
+      genres: createGenresArray(movie.genre_ids, allGenres),
+    });
   });
   return moviesWithGenresAndData;
 }

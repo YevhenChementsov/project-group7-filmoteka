@@ -11,7 +11,6 @@ const Refs = {
   prevPageButton: document.querySelector('.prev-page-button'),
   nextPageButton: document.querySelector('.next-page-button'),
   totalPagesButton: document.querySelector('.total-button'),
-  movieList: document.querySelector('.js-movie__list'),
   inputSearch: document.querySelector('.header__search-content input'),
   sliderWrapper: document.querySelector('.slider-wrapper'),
   sliderWrappeBtnLeft: document.querySelector('.glide__arrow--left'),
@@ -21,7 +20,7 @@ const Refs = {
   copyrightLogo: document.querySelector('.copyright-logo'),
   searchError: document.querySelector('.header__search-info'),
   movieModal: document.querySelector('.modal-card'),
-  modalBtns: document.querySelectorAll('.button-modal'),
+  modalBtns: document.querySelector('.modal-card-button'),
   modalCardsCloseBtn: document.querySelector('.button-close'),
   backdropModalCard: document.getElementById('backdrop'),
   navigationButtons: document.querySelector('.header__navigation'),
@@ -30,6 +29,12 @@ const Refs = {
   browseLibraryButtons: document.querySelector('.header__actions'),
   browseWatchedFilmsButton: document.querySelector('.watched-btn'),
   browseFilmsInQueueButton: document.querySelector('.queue-btn'),
+  usersFilmsLibrary: document.querySelector('.js-library__list'),
+  moveToFirstPageButton: document.querySelector('.move-to-first-btn'),
+  moveToLastPageButton: document.querySelector('.move-to-last-btn'),
+  additionalPaginationButtonsAfter: document.querySelector('.additional-btns-after'),
+  additionalPaginationButtonsBefore: document.querySelector('.additional-btns-before'),
+  firstAdditionalButton: document.querySelector('.first-button'),
 };
 
 export default Refs;

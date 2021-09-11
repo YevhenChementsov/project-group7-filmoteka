@@ -1,7 +1,7 @@
 .wrapper {
   margin-top: 20px;
   margin-bottom: 40px;
-  
+
   @media screen and (min-width: 768px) {
     margin-top: 60px;
     margin-bottom: 50px;
@@ -17,7 +17,8 @@
     position: relative;
     cursor: pointer;
     border-radius: 5px;
-    transition: transform .25s cubic-bezier(.4,0,.2,1),box-shadow .25s cubic-bezier(.4,0,.2,1);
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+      box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
     &:hover,
     &:focus {
@@ -37,7 +38,7 @@
 
   &__title {
     margin-top: 10px;
-    padding: 0 3px;
+    padding-left: 3px;
 
     font-size: 12px;
     line-height: 1.33;
@@ -50,7 +51,29 @@
     align-items: center;
     justify-content: center;
 
-    padding: 0 3px;
+    padding-left: 3px;
+
+    font-size: 12px;
+    line-height: 1.33;
+
+    color: #ff6b08;
+  }
+
+  &__span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 12px;
+    line-height: 1.33;
+
+    color: #ff6b08;
+  }
+
+  &__year {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 
     font-size: 12px;
     line-height: 1.33;
@@ -81,7 +104,7 @@
   grid-template-columns: repeat(1, 280px);
   gap: 20px;
   justify-content: center;
-  
+
   @media screen and (min-width: 768px) {
     grid-template-columns: repeat(2, 294px);
     grid-gap: 30px;
@@ -90,4 +113,8 @@
   @media screen and (min-width: 1024px) {
     grid-template-columns: repeat(3, 274px);
   }
+}
+.js-library__list {
+  list-style: none;
+  display: none;
 }
