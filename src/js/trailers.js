@@ -1,4 +1,5 @@
 import * as basicLightbox from 'basiclightbox';
+import API from './api-instance';
 
 function createTrailerLink(elementRef) {
   const trailerBtn = elementRef;
@@ -25,15 +26,15 @@ function createTrailerLink(elementRef) {
       .then(data => {
         const id = data.results[0].key;
         const instance = basicLightbox.create(`
-  <iframe width="560" height="315" src='https://www.youtube.com/embed/${id}'frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-`);
+      <iframe width="560" height="315" src='https://www.youtube.com/embed/${id}'frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    `);
         instance.show();
         modalClBtTrailer(instance);
       })
       .catch(() => {
         const instance = basicLightbox.create(`
-    <iframe width="560" height="315" src='http://www.youtube.com/embed/zwBpUdZ0lrQ' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      `);
+        <iframe width="560" height="315" src='http://www.youtube.com/embed/zwBpUdZ0lrQ' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          `);
 
         instance.show();
         modalClBtTrailer(instance);
