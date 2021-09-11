@@ -20,6 +20,7 @@ isSetFirstPageDisabled();
 isSetLastPageDisabled();
 
 function setCurrentPage(event) {
+  event.preventDefault();
   const query = API.query;
 
   const active = document.querySelector('.pgn-active');
@@ -54,7 +55,8 @@ function setCurrentPage(event) {
   findFirstFilm();
 }
 
-function setPrevPageAsCurrent() {
+function setPrevPageAsCurrent(event) {
+  event.preventDefault();
   const query = API.query;
   if (currentPage <= 1) {
     return;
@@ -91,7 +93,8 @@ function setPrevPageAsCurrent() {
 
 }
 
-function setNextPageAsCurrent() {
+function setNextPageAsCurrent(event) {
+  event.preventDefault();
   const query = API.query;
   if (currentPage === Number(Refs.totalPagesButton.innerHTML)) {
     Refs.prevPageButton.disabled = true;
