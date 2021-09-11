@@ -1,21 +1,43 @@
 import Refs from './refs';
 import temp from '../templates/cardModal.hbs';
 import appendMoviesMarkUp from './markup';
-let watchedMovies = [];
-let queueMovies = [];
-export default function showModal(movies) {
-  Refs.movieStorage.addEventListener('click', event => {
+
+export default class ShowModal {
+  watchedMovies = [];
+  queueMovies = [];
+  constructor(movieList) {
+    this.movies = movieList;
+    this.watchedMovies = this.watchedMovies;
+    this.queueMovies = this.queueMovies;
+  }
+
+  setListener() {
+    Refs.movieStorage.addEventListener('click', this.showModal.bind(this));
+  }
+
+  removeListener() {
+    Refs.movieStorage.removeEventListener('click', this.showModal.bind(this));
+  }
+
+  showModal(event) {
     event.preventDefault();
-    openModal(event.target);
-  });
-  function openModal(target) {
+
+    this.openModal(event);
+  }
+
+  setMovies(movies) {
+    this.movies = movies;
+  }
+
+  openModal(e) {
+    const target = e.target;
+
     Refs.backdropModalCard.classList.remove('is-hidden');
-    Refs.modalCardsCloseBtn.addEventListener('click', closeModalBeEscAndCloseBtn);
-    Refs.backdropModalCard.addEventListener('click', closeModalByClickBackdrop);
-    window.addEventListener('keydown', onModalPress);
-    Refs.movieModal.addEventListener('click', addMovieToLibrary);
+    Refs.modalCardsCloseBtn.addEventListener('click', this.closeModalBeEscAndCloseBtn.bind(this));
+    Refs.backdropModalCard.addEventListener('click', this.closeModalByClickBackdrop.bind(this));
+    window.addEventListener('keydown', this.onModalPress.bind(this));
     document.body.classList.add('open-modal');
-    const fetchedMovies = movies;
+    const fetchedMovies = this.movies;
     const movieCardInfo = fetchedMovies.filter(movie => {
       if (movie.id.toString() === target.dataset.id) {
         return movie;
@@ -23,10 +45,13 @@ export default function showModal(movies) {
       return;
     });
     appendMoviesMarkUp(Refs.movieModal, ...movieCardInfo, temp);
+    const modalBtns = document.querySelector('.modal-card-button');
+    modalBtns.addEventListener('click', this.addMovieToLibrary.bind(this));
   }
-  function addMovieToLibrary(e) {
+
+  addMovieToLibrary(e) {
     const image = document.querySelector('.modal-card .js-movie__image');
-    const fetchedMovies = movies;
+    const fetchedMovies = this.movies;
     const movieCardInfo = fetchedMovies.filter(movie => {
       if (movie.id.toString() === image.dataset.id) {
         return movie;
@@ -34,42 +59,50 @@ export default function showModal(movies) {
       return;
     });
     if (e.target.dataset.value === 'watched') {
-      e.target.textContent = 'Added to Watched!';
+      e.target.textContent = 'Delete from Watched';
       e.target.style.backgroundColor = 'yellow';
-      addMoviesToWatchedLibrary(...movieCardInfo);
+      this.addMoviesToWatchedLibrary(...movieCardInfo);
     } else if (e.target.dataset.value === 'queue') {
-      e.target.textContent = 'Added to Watched!';
+      e.target.textContent = 'Delete from queue';
       e.target.style.backgroundColor = 'yellow';
-      addMoviesToQueueLibrary(...movieCardInfo);
+      this.addMoviesToQueueLibrary(...movieCardInfo);
     }
   }
-  function addMoviesToWatchedLibrary(movie) {
-    watchedMovies.push(movie);
-    const movies = JSON.stringify(watchedMovies);
+
+  addMoviesToWatchedLibrary(movie) {
+    this.watchedMovies.push(movie);
+    const movies = JSON.stringify(this.watchedMovies);
     localStorage.setItem('watchedMovies', movies);
   }
-  function addMoviesToQueueLibrary(movie) {
-    queueMovies.push(movie);
-    const movies = JSON.stringify(queueMovies);
+
+  addMoviesToQueueLibrary(movie) {
+    this.queueMovies.push(movie);
+    const movies = JSON.stringify(this.queueMovies);
     localStorage.setItem('queueMovies', movies);
   }
-  function closeModalByClickBackdrop(e) {
+
+  closeModalByClickBackdrop(e) {
     if (e.target !== e.currentTarget) {
       return;
     }
-    Refs.backdropModalCard.classList.add('is-hidden');
-    Refs.backdropModalCard.removeEventListener('click', closeModalByClickBackdrop);
     document.body.classList.remove('open-modal');
-  }
-  function closeModalBeEscAndCloseBtn() {
     Refs.backdropModalCard.classList.add('is-hidden');
-    Refs.modalCardsCloseBtn.removeEventListener('click', closeModalBeEscAndCloseBtn);
-    window.removeEventListener('keydown', onModalPress);
-    document.body.classList.remove('open-modal');
+    Refs.backdropModalCard.removeEventListener('click', this.closeModalByClickBackdrop.bind(this));
   }
-  function onModalPress(event) {
+
+  closeModalBeEscAndCloseBtn() {
+    document.body.classList.remove('open-modal');
+    Refs.backdropModalCard.classList.add('is-hidden');
+    Refs.modalCardsCloseBtn.removeEventListener(
+      'click',
+      this.closeModalBeEscAndCloseBtn.bind(this),
+    );
+    window.removeEventListener('keydown', this.onModalPress.bind(this));
+  }
+
+  onModalPress(event) {
     if (event.key === 'Escape') {
-      closeModalBeEscAndCloseBtn();
+      this.closeModalBeEscAndCloseBtn();
     }
   }
 }

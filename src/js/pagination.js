@@ -60,6 +60,10 @@ function setPrevPageAsCurrent() {
     return;
   }
 
+  if (currentPage === Number(Refs.totalPagesButton.innerHTML)) {
+    return;
+  }
+
   if (currentPage !== 1) {
     checkAvailablePrevButtons();
   }
@@ -84,6 +88,7 @@ function setPrevPageAsCurrent() {
     isSetLastPageDisabled();
 
     findFirstFilm();
+
 }
 
 function setNextPageAsCurrent() {
@@ -173,7 +178,7 @@ function createNewPaginationButtonsFromTheEnd() {
 }
 
 function findFirstFilm() {
-  const firstFilm = Refs.movieList.firstElementChild;
+  const firstFilm = Refs.movieStorage.firstElementChild;
   if (firstFilm) {
     firstFilm.scrollIntoView({
       block: 'end',

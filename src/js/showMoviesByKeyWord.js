@@ -2,9 +2,12 @@ import API from './api-instance';
 import Refs from './refs';
 import cardTemplate from '../templates/card';
 import appendMoviesMarkUp from './markup';
-import showModal from './modalCardOnOpen';
+import ShowModal from './modalCardOnOpen';
+
 const initial = API.initialPage;
 const query = API.query;
+const modal = new ShowModal();
+
 export default async function showMoviesByKeyWord(query, page) {
   const movies = (await API.fetchMoviesByKeyWord(query, page)) || [];
   const genres = await API.fetchGenres();
@@ -23,9 +26,12 @@ export default async function showMoviesByKeyWord(query, page) {
   if (page === API.initialPage) {
     renewPaginationMarkup();
   }
-  showModal(moviesWithGenres);
+
   appendMoviesMarkUp(Refs.movieStorage, moviesWithGenres, cardTemplate);
-  return moviesWithGenres;
+  modal.setListener();
+  modal.setMovies(moviesWithGenres);
+  modal.removeListener();
+  // return moviesWithGenres;
 }
 if (query.length > 0) {
   showMoviesByKeyWord(query, initial);
