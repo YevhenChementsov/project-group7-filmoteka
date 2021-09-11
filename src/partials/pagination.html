@@ -1,10 +1,19 @@
 <div class="container pagination-container">
 <div class="pagination-wrapper">
+    <button class="move-to-first-btn pgn-btn">
+        <svg class="pgn-btn-icon" width="16" height="16">
+            <use href="./images/sprite.svg#icon-tab-left"></use>
+        </svg>
+    </button>
     <button class="prev-page-button pgn-btn">
         <svg class="pgn-btn-icon" width="16" height="16">
             <use href="./images/sprite.svg#icon-arrow-left"></use>
         </svg>
     </button>
+    <div class="additional-btns-before">
+        <button class="first-button pgn-btn">1</button>
+        <button class="dots-button pgn-btn" disabled>...</button>
+    </div>
     <ul class="pagination-list list">
         <li class="pagination-list-item">
             <button class="pagination-button pgn-btn pgn-active first-pgn">1</button>
@@ -22,11 +31,18 @@
             <button class="pagination-button pgn-btn">5</button>
         </li>
     </ul>
-    <button class="dots-button pgn-btn" disabled>...</button>
-    <button class="total-button pgn-btn">T</button>
+    <div class="additional-btns-after">
+        <button class="dots-button pgn-btn" disabled>...</button>
+        <button class="total-button pgn-btn">T</button>
+    </div>
     <button class="next-page-button pgn-btn">
         <svg class="pgn-btn-icon" width="16" height="16">
             <use href="./images/sprite.svg#icon-arrow-right"></use>
+        </svg>
+    </button>
+    <button class="move-to-last-btn pgn-btn">
+        <svg class="pgn-btn-icon" width="16" height="16">
+            <use href="./images/sprite.svg#icon-tab-right"></use>
         </svg>
     </button>
 </div>
