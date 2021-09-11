@@ -31,6 +31,11 @@ const Refs = {
   browseWatchedFilmsButton: document.querySelector('.watched-btn'),
   browseFilmsInQueueButton: document.querySelector('.queue-btn'),
   usersFilmsLibrary: document.querySelector('.js-library__list'),
+  moveToFirstPageButton: document.querySelector('.move-to-first-btn'),
+  moveToLastPageButton: document.querySelector('.move-to-last-btn'),
+  additionalPaginationButtonsAfter: document.querySelector('.additional-btns-after'),
+  additionalPaginationButtonsBefore: document.querySelector('.additional-btns-before'),
+  firstAdditionalButton: document.querySelector('.first-button'),
 };
 
 export default Refs;
