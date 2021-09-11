@@ -52,12 +52,13 @@
 
   &__logo {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
 
     a {
-      width: 24px;
-      height: 24px;
-      margin-right: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
     }
 
     &-name {
@@ -66,6 +67,7 @@
 
       @media screen and (min-width: 768px) {
         visibility: visible;
+        margin-left: 10px;
         font-size: 30px;
         line-height: 25px;
       }

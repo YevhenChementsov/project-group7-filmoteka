@@ -7,6 +7,7 @@ import ShowModal from './modalCardOnOpen';
 
 Refs.openHomepageButton.addEventListener('click', openHomepage);
 Refs.navigationButtons.addEventListener('click', isButtonActive);
+Refs.headerLinkToHomepage.addEventListener('click', openHomepageDirectly);
 
 const modal = new ShowModal();
 
@@ -26,6 +27,16 @@ function isButtonActive(event) {
     active.classList.remove('active-link');
   }
   event.target.classList.add('active-link');
+}
+
+function openHomepageDirectly() {
+  const activeLink = Refs.navigationButtons.lastElementChild.firstElementChild.classList.contains('active-link');
+  
+  if (activeLink) {
+    Refs.navigationButtons.lastElementChild.firstElementChild.classList.remove('active-link');
+    Refs.navigationButtons.firstElementChild.firstElementChild.classList.add('active-link');
+  }
+  openHomepage();
 }
 
 const initial = API.initialPage;
