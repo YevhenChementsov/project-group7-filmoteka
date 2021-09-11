@@ -14,13 +14,14 @@ function onOpenModal() {
   document.body.classList.add('modal-open');
 }
 
-function onCloseModal(event) {
+function onCloseModal() {
   document.body.classList.remove('modal-open');
   Refs.backdrop.classList.add('is-hidden');
-
-  Refs.backdrop.classList.add('is-hidden');
+  window.removeEventListener('keydown', onPressEscape);
+}
+function onPressEscape(event) {
   if (event.code === 'Escape') {
-    window.removeEventListener('keydown', onCloseModal);
+    onCloseModal();
   }
 }
 function onCloseModalBackdrop(event) {

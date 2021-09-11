@@ -27,7 +27,7 @@ export default class FetchMovieApi {
     try {
       const url = `${BASE_URL}trending/movie/day?api_key=${API_KEY}&page=${currentPage}`;
       const response = await fetch(url);
-      const { results, total_pages} = await response.json();
+      const { results, total_pages } = await response.json();
       Refs.totalPagesButton.innerHTML = total_pages;
       return results;
     } catch (error) {
@@ -49,6 +49,7 @@ export default class FetchMovieApi {
   }
 
   // ==========  By ID  ==========
+
   async fetchMoviesById(id) {
     const url = `${BASE_URL}movie/${id}?api_key=${API_KEY}&language=en-US`;
 
