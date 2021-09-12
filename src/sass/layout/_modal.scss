@@ -1,13 +1,18 @@
 .backdrop {
   position: fixed;
-  overflow: hidden;
+
   top: 0;
   left: 0;
 
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
+
+  padding: 20px;
 
   z-index: 100;
+  overflow: hidden;
+
+  overflow-y: scroll;
 
   background-color: rgba(180, 180, 209, 0.7);
 
@@ -25,34 +30,29 @@
 }
 
 .modal {
-  width: 100%;
-  height: auto;
-  overflow-y: auto;
+  max-width: 280px;
 
-  position: absolute;
-  top: 50%;
+  padding-top: 48px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+
+  position: relative;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%);
 
   background-color: white;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
 
-  @media screen and (min-width: 320px) {
-    max-width: 280px;
-    height: 85vh;
-  }
-
   @media screen and (min-width: 768px) {
-    width: 100%;
     max-width: 618px;
-    height: 85vh;
   }
 
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1024px) {
     max-width: 882px;
-    height: 85vh;
+    min-height: 568px;
   }
 }
 .button-close {
@@ -74,31 +74,32 @@
   &-icon {
     width: 100%;
     height: 100%;
+
+    stroke: black;
   }
 }
-
 .modal-card {
-  margin-top: 28px;
-  padding: 20px;
   &-button {
-    margin-top: 20px;
     display: flex;
     justify-content: space-evenly;
+
+    margin-top: 20px;
 
     @media screen and (min-width: 768px) {
       justify-content: space-between;
     }
 
-    @media screen and (min-width: 1280px) {
+    @media screen and (min-width: 1024px) {
       justify-content: space-around;
     }
   }
 
   &-img {
-    display: block;
-
     width: 100%;
-    // height: auto;
+    height: 478px;
+    @media screen and (min-width: 1024px) {
+      width: 396px;
+    }
   }
   @media screen and (min-width: 768px) {
     display: flex;
@@ -128,12 +129,32 @@
 
     &-items {
       margin-top: 10px;
+
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      grid-auto-rows: 16px;
+      grid-gap: 12px;
+
+      // @media screen and (min-width: 768px) {
+      //   width: 50%;
+      // }
+
       &_cat {
+        // width: 70px;
+        display: flex;
+
         font-weight: 500;
         font-size: 12px;
         line-height: 1.15;
 
         color: #8c8c8c;
+      }
+      &_vote {
+        text-align: start;
+        background-color: var(--accentColor);
+      }
+      &_value {
+        width: 150px;
       }
     }
   }
@@ -154,20 +175,21 @@
   }
 
   @media screen and (min-width: 768px) {
-    min-width: 264px;
-    margin-top: auto;
+    width: 264px;
     margin-left: 30px;
   }
 
-  @media screen and (min-width: 1280px) {
-    min-width: 398px;
+  @media screen and (min-width: 1024px) {
+    width: 398px;
   }
 }
 .button-modal {
   width: 112px;
   height: 44px;
+
   border-radius: 5px;
   border: 0.5px solid black;
+
   font-family: var(--primaryFont);
   font-weight: 500;
   font-size: 12px;
@@ -175,31 +197,23 @@
 
   cursor: pointer;
 
-  &.watched {
+  background-color: white;
+
+  &:focus,
+  &:hover {
     background-color: var(--accentColor);
     border-color: var(--accentColor);
-    &:focus,
-    &:hover {
-      border-color: black;
-    }
-  }
-  &.queue {
-    background-color: white;
-    &:focus,
-    &:hover {
-      border-color: var(--accentColor);
-    }
   }
 
   @media screen and (min-width: 768px) {
     width: 125px;
   }
 
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1024px) {
     width: 136px;
   }
 }
-
-.open-modal {
-  overflow: hidden;
+.fill {
+  object-fit: cover;
+  height: 100%;
 }

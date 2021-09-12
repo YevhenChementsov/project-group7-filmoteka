@@ -11,20 +11,27 @@
   <h2 class='description-tittle' data-id={{id}}>{{original_title}}</h2>
   <ul class='description-mainInfo'>
     <li class='description-mainInfo-items'>
-      <span class='description-mainInfo-items_cat'>Vote/Votes</span>
-      {{vote_average}}/{{vote_count}}
+      <span class='description-mainInfo-items_cat'><span
+          class='description-mainInfo-items_vote'
+        >Vote</span>
+        /Votes</span>
+      <span class='description-mainInfo-items_value'>{{vote_average}}/{{vote_count}}</span>
+
     </li>
     <li class='description-mainInfo-items'>
       <span class='description-mainInfo-items_cat'>Popularity</span>
-      {{popularity}}
+      <span class='description-mainInfo-items_value'>{{popularity}}</span>
+
     </li>
     <li class='description-mainInfo-items'>
       <span class='description-mainInfo-items_cat'>Original Title</span>
-      {{original_title}}
+      <span class='description-mainInfo-items_value'> {{original_title}}</span>
+
     </li>
     <li class='description-mainInfo-items'>
       <span class='description-mainInfo-items_cat'>Genres</span>
-      {{genres}}
+      <span class='description-mainInfo-items_value'> {{genres}}</span>
+
     </li>
   </ul>
   <h3 class='description-secondary--title'>ABOUT</h3>
