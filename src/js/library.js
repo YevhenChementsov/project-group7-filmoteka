@@ -31,20 +31,21 @@ async function makeLibraryVisible() {
   Refs.paginationContainer.style.display = 'none';
   Refs.movieStorage.style.display = 'none';
   Refs.usersFilmsLibrary.style.display = 'grid';
+  Refs.usersFilmsLibrary.classList.add('library-is-open');
   await showWatchedFilms();
 }
 
-async function showWatchedFilms() {
+export async function showWatchedFilms() {
   const savedWatchedMovies = localStorage.getItem('watchedMovies');
 
-  if (!savedWatchedMovies) {
+  if (!savedWatchedMovies || JSON.parse(savedWatchedMovies).length === 0) {
     notice({
         text: 'No films were added. Add a film.',
         delay: 2000,
         hide: true
       })
     return showLibraryIsEmpty();
-  }
+  } 
   if (Refs.browseFilmsInQueueButton.classList.contains('active')) {
     Refs.browseFilmsInQueueButton.classList.remove('active');
     Refs.browseWatchedFilmsButton.classList.add('active');
@@ -60,10 +61,10 @@ async function showWatchedFilms() {
   appendMoviesMarkUp(Refs.usersFilmsLibrary, watchedMoviesMarkup, movieCardTmpl);
 }
 
-async function showFilmsInQueue() {
+export async function showFilmsInQueue() {
   const savedFilmsInQueue = localStorage.getItem('queueMovies');
 
-  if (!savedFilmsInQueue) {
+  if (!savedFilmsInQueue || JSON.parse(savedFilmsInQueue).length === 0) {
     notice({
         text: 'No films were added. Add a film.',
         delay: 2000,
@@ -71,7 +72,10 @@ async function showFilmsInQueue() {
       })
      return showLibraryIsEmpty();
   }
-  
+  Refs.usersFilmsLibrary.classList.add('grid-list');
+  Refs.usersFilmsLibrary.style.display = 'grid';
+  Refs.usersFilmsLibrary.style.height = 'auto';
+
   const parsedFilmsInQueue = JSON.parse(savedFilmsInQueue);
 
   const filmsInQueueMarkup = await makeMoviesCardsMarkup(parsedFilmsInQueue);
