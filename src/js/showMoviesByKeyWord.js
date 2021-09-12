@@ -4,6 +4,14 @@ import cardTemplate from '../templates/card';
 import appendMoviesMarkUp from './markup';
 import ShowModal from './modalCardOnOpen';
 
+import { error, defaultModules } from '@pnotify/core';
+import '@pnotify/core/dist/PNotify.css';
+import * as PNotifyMobile from '@pnotify/mobile';
+import '@pnotify/mobile/dist/PNotifyMobile.css';
+import '@pnotify/core/dist/BrightTheme.css';
+defaultModules.set(PNotifyMobile, {});
+
+
 const initial = API.initialPage;
 const query = API.query;
 const modal = new ShowModal();
@@ -11,6 +19,16 @@ const modal = new ShowModal();
 export default async function showMoviesByKeyWord(query, page) {
   const movies = (await API.fetchMoviesByKeyWord(query, page)) || [];
   const genres = await API.fetchGenres();
+  
+  if (movies.length === 0) {
+    error({
+        text: 'No films can be found. Try another query.',
+        delay: 2000,
+        hide: true
+    })
+    return;
+  }
+
   const moviesWithGenres = movies.map(movie => {
     const { genre_ids } = movie;
     return {

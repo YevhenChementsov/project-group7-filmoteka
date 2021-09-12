@@ -62,10 +62,6 @@ function setPrevPageAsCurrent(event) {
     return;
   }
 
-  if (currentPage === Number(Refs.totalPagesButton.innerHTML)) {
-    return;
-  }
-
   if (currentPage !== 1) {
     checkAvailablePrevButtons();
   }
@@ -218,15 +214,16 @@ function setFirstPage() {
   if (active) {
     active.classList.remove('pgn-active');
   }
+
+  if (Refs.totalPagesButton.classList.contains('pgn-active')) {
+      Refs.totalPagesButton.classList.remove('pgn-active');
+    }
   
   Refs.additionalPaginationButtonsAfter.style.display = 'flex';
   Refs.additionalPaginationButtonsBefore.style.display = 'none';
 
   if (query.length > 0) {
     showMoviesByKeyWord(query, currentPage);
-    if (Refs.totalPagesButton.classList.contains('pgn-active')) {
-      Refs.totalPagesButton.classList.remove('pgn-active');
-    }
   } else {
     showPopularMoviesByDefault(currentPage);
   }
@@ -261,5 +258,5 @@ function setLastPage() {
   Refs.paginationList.innerHTML = prevPaginationButtonsMarkup;
   Refs.paginationList.lastElementChild.firstElementChild.classList.add('pgn-active');
 
-    findFirstFilm();
+  findFirstFilm();
 }
