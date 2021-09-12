@@ -118,3 +118,15 @@
   list-style: none;
   display: none;
 }
+.dots {
+  color: var(--accentColor);
+}
+.empty-library-title {
+  padding-top: 60px;
+  font-size: 26px;
+  line-height: 1.62;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--secondaryTextColor);
+  text-align: center;
+}

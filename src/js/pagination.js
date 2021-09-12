@@ -60,10 +60,6 @@ function setPrevPageAsCurrent() {
     return;
   }
 
-  if (currentPage === Number(Refs.totalPagesButton.innerHTML)) {
-    return;
-  }
-
   if (currentPage !== 1) {
     checkAvailablePrevButtons();
   }
