@@ -1,6 +1,7 @@
 import Refs from './refs';
 import temp from '../templates/cardModal.hbs';
 import appendMoviesMarkUp from './markup';
+import { showFilmsInQueue, showWatchedFilms } from './library';
 
 export default class ShowModal {
   constructor(movieList) {
@@ -87,6 +88,9 @@ export default class ShowModal {
 
     if (e.target.innerText === 'ADD TO WATCHED') {
       this.addMoviesToWatchedLibrary(movieCardInfo, e);
+      if (Refs.usersFilmsLibrary.classList.contains('library-is-open')) {
+        showWatchedFilms();
+      }
       return;
     }
 
@@ -97,6 +101,9 @@ export default class ShowModal {
 
     if (e.target.innerText === 'ADD TO QUEUE') {
       this.addMoviesToQueueLibrary(movieCardInfo, e);
+      if (Refs.usersFilmsLibrary.classList.contains('library-is-open')) {
+        showFilmsInQueue();
+      }
       return;
     }
   }
@@ -113,6 +120,10 @@ export default class ShowModal {
 
     const movies = JSON.stringify([...films, { ...movie, activeWatched: true }]);
     localStorage.setItem('watchedMovies', movies);
+
+    if (Refs.usersFilmsLibrary.classList.contains('library-is-open')) {
+      return showWatchedFilms();
+    }
     return;
   }
 
@@ -128,6 +139,10 @@ export default class ShowModal {
 
     const movies = JSON.stringify([...films, { ...movie, activeQueue: true }]);
     localStorage.setItem('queueMovies', movies);
+
+    if (Refs.usersFilmsLibrary.classList.contains('library-is-open')) {
+      return showFilmsInQueue();
+    }
     return;
   }
 
@@ -139,7 +154,7 @@ export default class ShowModal {
     const index = films.findIndex(film => film.id === movie.id);
     const newFilms = films.splice(index, 1);
     localStorage.setItem('watchedMovies', JSON.stringify(films));
-    return;
+    return showWatchedFilms();
   }
 
   deleteMoviesFromQueueLibrary(movie, e) {
@@ -150,7 +165,7 @@ export default class ShowModal {
     const index = films.findIndex(film => film.id === movie.id);
     const newFilms = films.splice(index, 1);
     localStorage.setItem('queueMovies', JSON.stringify(films));
-    return;
+    return showFilmsInQueue();
   }
 
   closeModalByClickBackdrop(e) {
