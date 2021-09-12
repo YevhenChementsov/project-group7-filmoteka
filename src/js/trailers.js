@@ -19,6 +19,7 @@ function createTrailerLink(elementRef) {
   );
 
   function drawModalForTrailler(id) {
+    document.body.classList.add('open-modal');
     const API_KEY = '74b3d185775f996114b8f83bcbb83c33';
     const url = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}&language=en-US`;
     fetch(url)
@@ -53,7 +54,10 @@ function createTrailerLink(elementRef) {
     `,
     );
     const modalCloseBtn = document.querySelector('[data-action="close-lightbox"]');
-    modalCloseBtn.addEventListener('click', () => instance.close());
+    modalCloseBtn.addEventListener('click', () => {
+      document.body.classList.remove('open-modal');
+      instance.close();
+    });
   }
 }
 
