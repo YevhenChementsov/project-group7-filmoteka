@@ -26,6 +26,10 @@ export default class ShowModal {
 
   openModal(e) {
     const target = e.target;
+    const movies = localStorage.getItem('watchedMovies');
+    const films = JSON.parse(movies);
+    const moviesQueue = localStorage.getItem('queueMovies');
+    const filmsQueue = JSON.parse(moviesQueue);
     Refs.backdropModalCard.classList.remove('is-hidden');
     Refs.modalCardsCloseBtn.addEventListener('click', this.closeModalBeEscAndCloseBtn.bind(this));
     Refs.backdropModalCard.addEventListener('click', this.closeModalByClickBackdrop.bind(this));
@@ -38,9 +42,28 @@ export default class ShowModal {
       }
       return;
     });
+
     appendMoviesMarkUp(Refs.movieModal, ...movieCardInfo, temp);
     const modalBtns = document.querySelector('.modal-card-button');
     modalBtns.addEventListener('click', this.addMovieToLibrary.bind(this));
+    if (films !== null) {
+      films.forEach(film => {
+        if (film.id === movieCardInfo[0].id && film.activeWatched) {
+          modalBtns.firstElementChild.textContent = 'DELETE FROM WATCHED';
+          modalBtns.firstElementChild.style.backgroundColor = 'yellow';
+          return;
+        }
+        return;
+      });
+
+      filmsQueue.forEach(film => {
+        if (film.id === movieCardInfo[0].id && film.activeQueue) {
+          modalBtns.lastElementChild.textContent = 'DELETE FROM QUEUE';
+          modalBtns.lastElementChild.style.backgroundColor = 'yellow';
+        }
+        return;
+      });
+    }
   }
 
   addMovieToLibrary(e) {
@@ -55,35 +78,59 @@ export default class ShowModal {
     const movieCardInfo = { ...cardInfo[0] };
 
     if (e.target.innerText === 'DELETE FROM WATCHED') {
-      e.target.textContent = 'ADD TO WATCHED';
-      e.target.style.backgroundColor = 'white';
-      this.deleteMoviesFromWatchedLibrary(movieCardInfo);
+      this.deleteMoviesFromWatchedLibrary(movieCardInfo, e);
       return;
     }
 
     if (e.target.innerText === 'ADD TO WATCHED') {
-      e.target.textContent = 'DELETE FROM WATCHED';
-      e.target.style.backgroundColor = 'yellow';
-      this.addMoviesToWatchedLibrary(movieCardInfo);
+      this.addMoviesToWatchedLibrary(movieCardInfo, e);
       return;
     }
 
     if (e.target.innerText === 'DELETE FROM QUEUE') {
-      e.target.textContent = 'ADD TO QUEUE';
-      e.target.style.backgroundColor = 'white';
-      this.deleteMoviesFromQueueLibrary(movieCardInfo);
+      this.deleteMoviesFromQueueLibrary(movieCardInfo, e);
       return;
     }
 
     if (e.target.innerText === 'ADD TO QUEUE') {
-      e.target.textContent = 'DELETE FROM QUEUE';
-      e.target.style.backgroundColor = 'yellow';
-      this.addMoviesToQueueLibrary(movieCardInfo);
+      this.addMoviesToQueueLibrary(movieCardInfo, e);
       return;
     }
   }
 
-  deleteMoviesFromWatchedLibrary(movie) {
+  addMoviesToWatchedLibrary(movie, e) {
+    e.target.textContent = 'DELETE FROM WATCHED';
+    e.target.style.backgroundColor = 'yellow';
+    const films = JSON.parse(localStorage.getItem('watchedMovies'));
+
+    if (films === null || films.length < 1) {
+      localStorage.setItem('watchedMovies', JSON.stringify([{ ...movie, activeWatched: true }]));
+      return;
+    }
+
+    const movies = JSON.stringify([...films, { ...movie, activeWatched: true }]);
+    localStorage.setItem('watchedMovies', movies);
+    return;
+  }
+
+  addMoviesToQueueLibrary(movie, e) {
+    e.target.textContent = 'DELETE FROM QUEUE';
+    e.target.style.backgroundColor = 'yellow';
+    const films = JSON.parse(localStorage.getItem('queueMovies'));
+
+    if (films === null || films.length < 1) {
+      localStorage.setItem('queueMovies', JSON.stringify([{ ...movie, activeQueue: true }]));
+      return;
+    }
+
+    const movies = JSON.stringify([...films, { ...movie, activeQueue: true }]);
+    localStorage.setItem('queueMovies', movies);
+    return;
+  }
+
+  deleteMoviesFromWatchedLibrary(movie, e) {
+    e.target.textContent = 'ADD TO WATCHED';
+    e.target.style.backgroundColor = 'white';
     const movies = localStorage.getItem('watchedMovies');
     const films = JSON.parse(movies);
     const index = films.findIndex(film => film.id === movie.id);
@@ -92,39 +139,14 @@ export default class ShowModal {
     return;
   }
 
-  deleteMoviesFromQueueLibrary(movie) {
+  deleteMoviesFromQueueLibrary(movie, e) {
+    e.target.textContent = 'ADD TO QUEUE';
+    e.target.style.backgroundColor = 'white';
     const movies = localStorage.getItem('queueMovies');
     const films = JSON.parse(movies);
     const index = films.findIndex(film => film.id === movie.id);
     const newFilms = films.splice(index, 1);
     localStorage.setItem('queueMovies', JSON.stringify(films));
-    return;
-  }
-
-  addMoviesToWatchedLibrary(movie) {
-    const films = JSON.parse(localStorage.getItem('watchedMovies'));
-
-    if (films === null) {
-      localStorage.setItem('watchedMovies', JSON.stringify([movie]));
-      return;
-    }
-
-    const movies = JSON.stringify([...films, movie]);
-    localStorage.setItem('watchedMovies', movies);
-    return;
-  }
-
-  addMoviesToQueueLibrary(movie) {
-    const films = JSON.parse(localStorage.getItem('queueMovies'));
-    console.log(films);
-
-    if (films === null) {
-      localStorage.setItem('queueMovies', JSON.stringify([movie]));
-      return;
-    }
-
-    const movies = JSON.stringify([...films, movie]);
-    localStorage.setItem('queueMovies', movies);
     return;
   }
 
