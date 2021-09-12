@@ -9,6 +9,7 @@ export default class ShowModal {
 
   setListener() {
     Refs.movieStorage.addEventListener('click', this.showModal.bind(this));
+    Refs.usersFilmsLibrary.addEventListener('click', this.showModal.bind(this));
   }
 
   removeListener() {
