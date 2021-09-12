@@ -51,7 +51,7 @@ export default class ShowModal {
       films.forEach(film => {
         if (film.id === movieCardInfo[0].id && film.activeWatched) {
           modalBtns.firstElementChild.textContent = 'DELETE FROM WATCHED';
-          modalBtns.firstElementChild.style.backgroundColor = 'yellow';
+          modalBtns.firstElementChild.style.backgroundColor = '#FF6B01';
           return;
         }
         return;
@@ -62,7 +62,7 @@ export default class ShowModal {
       filmsQueue.forEach(film => {
         if (film.id === movieCardInfo[0].id && film.activeQueue) {
           modalBtns.lastElementChild.textContent = 'DELETE FROM QUEUE';
-          modalBtns.lastElementChild.style.backgroundColor = 'yellow';
+          modalBtns.lastElementChild.style.backgroundColor = '#FF6B01';
           return;
         }
         return;
@@ -110,7 +110,7 @@ export default class ShowModal {
 
   addMoviesToWatchedLibrary(movie, e) {
     e.target.textContent = 'DELETE FROM WATCHED';
-    e.target.style.backgroundColor = 'yellow';
+    e.target.style.backgroundColor = '#FF6B01';
     const films = JSON.parse(localStorage.getItem('watchedMovies'));
 
     if (films === null || films.length < 1) {
@@ -129,7 +129,7 @@ export default class ShowModal {
 
   addMoviesToQueueLibrary(movie, e) {
     e.target.textContent = 'DELETE FROM QUEUE';
-    e.target.style.backgroundColor = 'yellow';
+    e.target.style.backgroundColor = '#FF6B01';
     const films = JSON.parse(localStorage.getItem('queueMovies'));
 
     if (films === null || films.length < 1) {

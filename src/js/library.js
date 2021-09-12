@@ -27,6 +27,7 @@ function toggleActiveClass(event) {
 }
 
 async function makeLibraryVisible() {
+  Refs.searchPageBtn.style.display = 'block';
   Refs.browseLibraryButtons.style.display = 'flex';
   Refs.paginationContainer.style.display = 'none';
   Refs.movieStorage.style.display = 'none';
@@ -40,12 +41,12 @@ export async function showWatchedFilms() {
 
   if (!savedWatchedMovies || JSON.parse(savedWatchedMovies).length === 0) {
     notice({
-        text: 'No films were added. Add a film.',
-        delay: 2000,
-        hide: true
-      })
+      text: 'No films were added. Add a film.',
+      delay: 2000,
+      hide: true,
+    });
     return showLibraryIsEmpty();
-  } 
+  }
   if (Refs.browseFilmsInQueueButton.classList.contains('active')) {
     Refs.browseFilmsInQueueButton.classList.remove('active');
     Refs.browseWatchedFilmsButton.classList.add('active');
@@ -66,11 +67,11 @@ export async function showFilmsInQueue() {
 
   if (!savedFilmsInQueue || JSON.parse(savedFilmsInQueue).length === 0) {
     notice({
-        text: 'No films were added. Add a film.',
-        delay: 2000,
-        hide: true
-      })
-     return showLibraryIsEmpty();
+      text: 'No films were added. Add a film.',
+      delay: 2000,
+      hide: true,
+    });
+    return showLibraryIsEmpty();
   }
   Refs.usersFilmsLibrary.classList.add('grid-list');
   Refs.usersFilmsLibrary.style.display = 'grid';
@@ -110,11 +111,11 @@ async function makeMoviesCardsMarkup(movies) {
 }
 
 function showLibraryIsEmpty() {
-    Refs.usersFilmsLibrary.classList.remove('grid-list');
-    Refs.usersFilmsLibrary.style.display = 'block';
-    Refs.usersFilmsLibrary.style.height = '280px';
-  return Refs.usersFilmsLibrary.innerHTML = `
+  Refs.usersFilmsLibrary.classList.remove('grid-list');
+  Refs.usersFilmsLibrary.style.display = 'block';
+  Refs.usersFilmsLibrary.style.height = '280px';
+  return (Refs.usersFilmsLibrary.innerHTML = `
     <li>
     <h1 class="empty-library-title">Nothing has been added yet<span class="dots">...</span></h1>
-    </li>`
+    </li>`);
 }
