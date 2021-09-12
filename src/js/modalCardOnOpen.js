@@ -103,7 +103,6 @@ export default class ShowModal {
 
   addMoviesToWatchedLibrary(movie) {
     const films = JSON.parse(localStorage.getItem('watchedMovies'));
-    console.log(films);
 
     if (films === null) {
       localStorage.setItem('watchedMovies', JSON.stringify([movie]));
