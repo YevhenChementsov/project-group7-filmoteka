@@ -55,11 +55,14 @@ export default class ShowModal {
         }
         return;
       });
+    }
 
+    if (filmsQueue !== null) {
       filmsQueue.forEach(film => {
         if (film.id === movieCardInfo[0].id && film.activeQueue) {
           modalBtns.lastElementChild.textContent = 'DELETE FROM QUEUE';
           modalBtns.lastElementChild.style.backgroundColor = 'yellow';
+          return;
         }
         return;
       });
