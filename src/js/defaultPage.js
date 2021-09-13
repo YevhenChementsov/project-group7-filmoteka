@@ -44,6 +44,30 @@ function isButtonActive(event) {
   event.target.classList.add('active-link');
 }
 
+function openHomepageDirectly() {
+  const activeLink = Refs.navigationButtons.lastElementChild.firstElementChild.classList.contains('active-link');
+
+  Refs.searchPageBtn.removeEventListener('click', onOpenPreviousSearchPage);
+  Refs.searchPageBtn.style.display = 'none';
+  Refs.header.classList.remove('library');
+  Refs.openLibraryButton.classList.remove('active-link');
+  Refs.browseLibraryButtons.style.display = 'none';
+  Refs.paginationContainer.style.display = 'flex';
+  Refs.movieStorage.style.display = 'grid';
+  Refs.usersFilmsLibrary.style.display = 'none';
+
+  API.query = '';
+  Refs.inputSearch.value = "";
+  renewPaginationMarkup();
+  showPopularMoviesByDefault(initial);
+  
+  if (activeLink) {
+    Refs.navigationButtons.lastElementChild.firstElementChild.classList.remove('active-link');
+    Refs.navigationButtons.firstElementChild.firstElementChild.classList.add('active-link');
+  }
+  openHomepage();
+}
+
 const initial = API.initialPage;
 export default async function showPopularMoviesByDefault(page) {
   const movies = await API.fetchTrendingMovies(page);
