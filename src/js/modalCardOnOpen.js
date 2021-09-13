@@ -2,6 +2,7 @@ import Refs from './refs';
 import temp from '../templates/cardModal.hbs';
 import appendMoviesMarkUp from './markup';
 import { showFilmsInQueue, showWatchedFilms } from './library';
+import lazyLoad from './spinner1';
 
 export default class ShowModal {
   constructor(movieList) {
@@ -45,6 +46,7 @@ export default class ShowModal {
     });
 
     appendMoviesMarkUp(Refs.movieModal, ...movieCardInfo, temp);
+    const append = lazyLoad();
     const modalBtns = document.querySelector('.modal-card-button');
     modalBtns.addEventListener('click', this.addMovieToLibrary.bind(this));
     if (films !== null) {

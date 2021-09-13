@@ -2,6 +2,7 @@ import Refs from './refs';
 import movieCardTmpl from '../templates/card.hbs';
 import appendMoviesMarkUp from './markup';
 import API from './api-instance';
+import lazyLoad from './spinner1';
 
 import { error, notice, alert, defaultModules } from '@pnotify/core';
 import '@pnotify/core/dist/PNotify.css';
@@ -35,6 +36,7 @@ async function makeLibraryVisible() {
   Refs.header.classList.add('library');
   Refs.usersFilmsLibrary.classList.add('library-is-open');
   await showWatchedFilms();
+  await lazyLoad();
 }
 
 export async function showWatchedFilms() {
@@ -61,6 +63,7 @@ export async function showWatchedFilms() {
 
   const watchedMoviesMarkup = await makeMoviesCardsMarkup(parsedWatchedMovies);
   appendMoviesMarkUp(Refs.usersFilmsLibrary, watchedMoviesMarkup, movieCardTmpl);
+  await lazyLoad();
 }
 
 export async function showFilmsInQueue() {
@@ -82,6 +85,7 @@ export async function showFilmsInQueue() {
 
   const filmsInQueueMarkup = await makeMoviesCardsMarkup(parsedFilmsInQueue);
   appendMoviesMarkUp(Refs.usersFilmsLibrary, filmsInQueueMarkup, movieCardTmpl);
+  await lazyLoad();
 }
 
 async function makeMoviesCardsMarkup(movies) {

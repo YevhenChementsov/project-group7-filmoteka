@@ -3,9 +3,16 @@ import movieCardTmpl from '../templates/card.hbs';
 import appendMoviesMarkUp from './markup';
 import API from './api-instance';
 import ShowModal from './modalCardOnOpen';
+import lazyLoad from './spinner1';
+import { renewPaginationMarkup } from './showMoviesByKeyWord';
 import * as Module from './pagination';
 import showMoviesByKeyWord, { renewPaginationMarkup } from './showMoviesByKeyWord';
-import { isSetFirstPageDisabled, isSetLastPageDisabled, isPrevPageDisabled, isNextPageDisabled } from './pagination';
+import {
+  isSetFirstPageDisabled,
+  isSetLastPageDisabled,
+  isPrevPageDisabled,
+  isNextPageDisabled,
+} from './pagination';
 // import * as Pagination from './showMoviesByKeyWord';
 
 Refs.searchPageBtn.addEventListener('click', onOpenPreviousSearchPage);
@@ -15,13 +22,25 @@ Refs.openHomepageButton.addEventListener('click', openHomepageDirectly);
 
 const modal = new ShowModal();
 
+var options = {
+  rootMargin: '-50px',
+};
+var callback = function (entries) {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const image = lazyLoad();
+    }
+  });
+};
+var observer = new IntersectionObserver(callback, options);
+
 function onOpenPreviousSearchPage() {
   const query = API.query;
-  
+
   if (query.length === 0) {
     return;
   }
-  
+
   Refs.openLibraryButton.classList.remove('active-link');
   Refs.browseLibraryButtons.style.display = 'none';
   Refs.searchPageBtn.style.display = 'none';
@@ -42,30 +61,6 @@ function isButtonActive(event) {
     active.classList.remove('active-link');
   }
   event.target.classList.add('active-link');
-}
-
-function openHomepageDirectly() {
-  const activeLink = Refs.navigationButtons.lastElementChild.firstElementChild.classList.contains('active-link');
-
-  Refs.searchPageBtn.removeEventListener('click', onOpenPreviousSearchPage);
-  Refs.searchPageBtn.style.display = 'none';
-  Refs.header.classList.remove('library');
-  Refs.openLibraryButton.classList.remove('active-link');
-  Refs.browseLibraryButtons.style.display = 'none';
-  Refs.paginationContainer.style.display = 'flex';
-  Refs.movieStorage.style.display = 'grid';
-  Refs.usersFilmsLibrary.style.display = 'none';
-
-  API.query = '';
-  Refs.inputSearch.value = "";
-  renewPaginationMarkup();
-  showPopularMoviesByDefault(initial);
-  
-  if (activeLink) {
-    Refs.navigationButtons.lastElementChild.firstElementChild.classList.remove('active-link');
-    Refs.navigationButtons.firstElementChild.firstElementChild.classList.add('active-link');
-  }
-  openHomepage();
 }
 
 const initial = API.initialPage;
@@ -90,6 +85,9 @@ export default async function showPopularMoviesByDefault(page) {
   });
 
   appendMoviesMarkUp(Refs.movieStorage, moviesWithGenres, movieCardTmpl);
+  await lazyLoad();
+  const images = document.querySelectorAll('.js-movie__image');
+  images.forEach(image => observer.observe(image));
   modal.setListener();
   modal.setMovies(moviesWithGenres);
   modal.removeListener();
@@ -97,18 +95,21 @@ export default async function showPopularMoviesByDefault(page) {
 showPopularMoviesByDefault(initial);
 
 async function openHomepageDirectly() {
+  Refs.searchPageBtn.removeEventListener('click', onOpenPreviousSearchPage);
   Refs.searchPageBtn.style.display = 'none';
-
+  Refs.header.classList.remove('library');
   Refs.openLibraryButton.classList.remove('active-link');
   Refs.browseLibraryButtons.style.display = 'none';
   Refs.paginationContainer.style.display = 'flex';
   Refs.movieStorage.style.display = 'grid';
-  
-  const activeLink = Refs.navigationButtons.lastElementChild.firstElementChild.classList.contains('active-link');
-  
+  Refs.usersFilmsLibrary.style.display = 'none';
+
+  const activeLink =
+    Refs.navigationButtons.lastElementChild.firstElementChild.classList.contains('active-link');
+
   API.query = '';
-  Refs.inputSearch.value = "";
-  
+  Refs.inputSearch.value = '';
+
   if (activeLink) {
     Refs.navigationButtons.lastElementChild.firstElementChild.classList.remove('active-link');
     Refs.navigationButtons.firstElementChild.firstElementChild.classList.add('active-link');
@@ -116,22 +117,22 @@ async function openHomepageDirectly() {
 
   await showPopularMoviesByDefault(initial);
   Module.page.current = 1;
-    
-    const active = document.querySelector('pgn-active');
-      if (active) {
-      active.classList.remove('pgn-active');
-    }
 
-      if (Refs.totalPagesButton.classList.contains('pgn-active')) {
-      Refs.totalPagesButton.classList.remove('pgn-active');
-    }
+  const active = document.querySelector('pgn-active');
+  if (active) {
+    active.classList.remove('pgn-active');
+  }
 
-    Refs.additionalPaginationButtonsAfter.style.display = 'flex';
-    Refs.additionalPaginationButtonsBefore.style.display = 'none';
+  if (Refs.totalPagesButton.classList.contains('pgn-active')) {
+    Refs.totalPagesButton.classList.remove('pgn-active');
+  }
 
-    renewPaginationMarkup();
-    isSetFirstPageDisabled();
-    isSetLastPageDisabled();
-    isPrevPageDisabled();
-    isNextPageDisabled();
+  Refs.additionalPaginationButtonsAfter.style.display = 'flex';
+  Refs.additionalPaginationButtonsBefore.style.display = 'none';
+
+  renewPaginationMarkup();
+  isSetFirstPageDisabled();
+  isSetLastPageDisabled();
+  isPrevPageDisabled();
+  isNextPageDisabled();
 }
