@@ -3,6 +3,7 @@ import movieCardTmpl from '../templates/card.hbs';
 import appendMoviesMarkUp from './markup';
 import API from './api-instance';
 import ShowModal from './modalCardOnOpen';
+import lazyLoad from './spinner1';
 // import * as Pagination from './showMoviesByKeyWord';
 
 Refs.openHomepageButton.addEventListener('click', openHomepage);
@@ -10,6 +11,16 @@ Refs.navigationButtons.addEventListener('click', isButtonActive);
 Refs.headerLinkToHomepage.addEventListener('click', openHomepageDirectly);
 
 const modal = new ShowModal();
+
+// var options = {
+//   root: document.querySelector('#scrollArea'),
+//   rootMargin: '0px',
+//   threshold: 1.0,
+// };
+// var callback = function (entries, observer) {
+//   /* Content excerpted, show below */
+// };
+// var observer = new IntersectionObserver(callback, options);
 
 function openHomepage() {
   Refs.browseLibraryButtons.style.display = 'none';
@@ -30,8 +41,9 @@ function isButtonActive(event) {
 }
 
 function openHomepageDirectly() {
-  const activeLink = Refs.navigationButtons.lastElementChild.firstElementChild.classList.contains('active-link');
-  
+  const activeLink =
+    Refs.navigationButtons.lastElementChild.firstElementChild.classList.contains('active-link');
+
   if (activeLink) {
     Refs.navigationButtons.lastElementChild.firstElementChild.classList.remove('active-link');
     Refs.navigationButtons.firstElementChild.firstElementChild.classList.add('active-link');
@@ -61,6 +73,9 @@ export default async function showPopularMoviesByDefault(page) {
   });
 
   appendMoviesMarkUp(Refs.movieStorage, moviesWithGenres, movieCardTmpl);
+  await lazyLoad();
+  const images = document.querySelectorAll('.js-movie__image');
+  images.forEach(image => observer.observe(image));
   modal.setListener();
   modal.setMovies(moviesWithGenres);
   modal.removeListener();

@@ -1,6 +1,8 @@
 {{#each this}}
   <li class='js-movie__item grid-item' data-id={{id}}>
 
+    <span class='loader'></span>
+
     {{#if poster_path}}
       <img
         class='js-movie__image'
@@ -25,13 +27,13 @@
       <h2 class='js-movie__title grid-title' data-id={{id}}>"No Title"</h2>
     {{/if}}
 
-    {{#if genre_ids }}
+    {{#if genre_ids}}
       <p class='js-movie__genre grid-genre'>{{genres}}</p>
     {{else}}
       <p class='js-movie__genre grid-genre'>"No Genres"</p>
     {{/if}}
-    
-      <span class="js-movie__span">|</span>
+
+    <span class='js-movie__span'>|</span>
 
     {{#if release_date}}
       <p class='js-movie__year grid-year'>{{year}}</p>
@@ -44,6 +46,6 @@
     {{else}}
       <p class='js-movie__vote grid-vote'>0</p>
     {{/if}} --}}
-  
+
   </li>
 {{/each}}
