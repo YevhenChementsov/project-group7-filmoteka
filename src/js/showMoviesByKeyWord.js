@@ -10,7 +10,7 @@ import * as PNotifyMobile from '@pnotify/mobile';
 import '@pnotify/mobile/dist/PNotifyMobile.css';
 import '@pnotify/core/dist/BrightTheme.css';
 defaultModules.set(PNotifyMobile, {});
-
+import lazyLoad from './spinner1';
 
 const initial = API.initialPage;
 const query = API.query;
@@ -19,13 +19,13 @@ const modal = new ShowModal();
 export default async function showMoviesByKeyWord(query, page) {
   const movies = (await API.fetchMoviesByKeyWord(query, page)) || [];
   const genres = await API.fetchGenres();
-  
+
   if (movies.length === 0) {
     error({
-        text: 'No films can be found. Try another query.',
-        delay: 2000,
-        hide: true
-    })
+      text: 'No films can be found. Try another query.',
+      delay: 2000,
+      hide: true,
+    });
     return;
   }
 
@@ -46,6 +46,7 @@ export default async function showMoviesByKeyWord(query, page) {
   }
 
   appendMoviesMarkUp(Refs.movieStorage, moviesWithGenres, cardTemplate);
+  await lazyLoad();
   modal.setListener();
   modal.setMovies(moviesWithGenres);
   modal.removeListener();

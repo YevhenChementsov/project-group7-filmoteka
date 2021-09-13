@@ -12,15 +12,19 @@ Refs.headerLinkToHomepage.addEventListener('click', openHomepageDirectly);
 
 const modal = new ShowModal();
 
-// var options = {
-//   root: document.querySelector('#scrollArea'),
-//   rootMargin: '0px',
-//   threshold: 1.0,
-// };
-// var callback = function (entries, observer) {
-//   /* Content excerpted, show below */
-// };
-// var observer = new IntersectionObserver(callback, options);
+var options = {
+  // root: document.querySelector('#scrollArea'),
+  rootMargin: '50px',
+  // threshold: 1.0,
+};
+var callback = function (entries, observer) {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const image = lazyLoad();
+    }
+  });
+};
+var observer = new IntersectionObserver(callback, options);
 
 function openHomepage() {
   Refs.browseLibraryButtons.style.display = 'none';

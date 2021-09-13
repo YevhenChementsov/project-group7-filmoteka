@@ -41,7 +41,12 @@
     &.is-loaded {
       filter: none;
       opacity: 1;
-      transition: all 1.5s;
+      transition: all 1s;
+    }
+    &.is-modal-loaded {
+      filter: none;
+      opacity: 1;
+      transition: all 0.25s;
     }
   }
 

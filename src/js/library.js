@@ -2,6 +2,7 @@ import Refs from './refs';
 import movieCardTmpl from '../templates/card.hbs';
 import appendMoviesMarkUp from './markup';
 import API from './api-instance';
+import lazyLoad from './spinner1';
 
 import { error, notice, alert, defaultModules } from '@pnotify/core';
 import '@pnotify/core/dist/PNotify.css';
@@ -33,6 +34,7 @@ async function makeLibraryVisible() {
   Refs.usersFilmsLibrary.style.display = 'grid';
   Refs.usersFilmsLibrary.classList.add('library-is-open');
   await showWatchedFilms();
+  await lazyLoad();
 }
 
 export async function showWatchedFilms() {
@@ -40,12 +42,12 @@ export async function showWatchedFilms() {
 
   if (!savedWatchedMovies || JSON.parse(savedWatchedMovies).length === 0) {
     notice({
-        text: 'No films were added. Add a film.',
-        delay: 2000,
-        hide: true
-      })
+      text: 'No films were added. Add a film.',
+      delay: 2000,
+      hide: true,
+    });
     return showLibraryIsEmpty();
-  } 
+  }
   if (Refs.browseFilmsInQueueButton.classList.contains('active')) {
     Refs.browseFilmsInQueueButton.classList.remove('active');
     Refs.browseWatchedFilmsButton.classList.add('active');
@@ -66,11 +68,11 @@ export async function showFilmsInQueue() {
 
   if (!savedFilmsInQueue || JSON.parse(savedFilmsInQueue).length === 0) {
     notice({
-        text: 'No films were added. Add a film.',
-        delay: 2000,
-        hide: true
-      })
-     return showLibraryIsEmpty();
+      text: 'No films were added. Add a film.',
+      delay: 2000,
+      hide: true,
+    });
+    return showLibraryIsEmpty();
   }
   Refs.usersFilmsLibrary.classList.add('grid-list');
   Refs.usersFilmsLibrary.style.display = 'grid';
@@ -110,11 +112,11 @@ async function makeMoviesCardsMarkup(movies) {
 }
 
 function showLibraryIsEmpty() {
-    Refs.usersFilmsLibrary.classList.remove('grid-list');
-    Refs.usersFilmsLibrary.style.display = 'block';
-    Refs.usersFilmsLibrary.style.height = '280px';
-  return Refs.usersFilmsLibrary.innerHTML = `
+  Refs.usersFilmsLibrary.classList.remove('grid-list');
+  Refs.usersFilmsLibrary.style.display = 'block';
+  Refs.usersFilmsLibrary.style.height = '280px';
+  return (Refs.usersFilmsLibrary.innerHTML = `
     <li>
     <h1 class="empty-library-title">Nothing has been added yet<span class="dots">...</span></h1>
-    </li>`
+    </li>`);
 }
