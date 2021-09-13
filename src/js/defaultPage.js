@@ -53,6 +53,15 @@ function openHomepageDirectly() {
   const activeLink =
     Refs.navigationButtons.lastElementChild.firstElementChild.classList.contains('active-link');
 
+  Refs.searchPageBtn.removeEventListener('click', onOpenPreviousSearchPage);
+  Refs.searchPageBtn.style.display = 'none';
+  Refs.header.classList.remove('library');
+  Refs.openLibraryButton.classList.remove('active-link');
+  Refs.browseLibraryButtons.style.display = 'none';
+  Refs.paginationContainer.style.display = 'flex';
+  Refs.movieStorage.style.display = 'grid';
+  Refs.usersFilmsLibrary.style.display = 'none';
+
   API.query = '';
   Refs.inputSearch.value = '';
   renewPaginationMarkup();
@@ -95,17 +104,3 @@ export default async function showPopularMoviesByDefault(page) {
   modal.removeListener();
 }
 showPopularMoviesByDefault(initial);
-
-function openHomepageDirectly() {
-  console.log('yes');
-  Refs.searchPageBtn.removeEventListener('click', onOpenPreviousSearchPage);
-  Refs.searchPageBtn.style.display = 'none';
-
-  Refs.openLibraryButton.classList.remove('active-link');
-  Refs.browseLibraryButtons.style.display = 'none';
-  Refs.paginationContainer.style.display = 'flex';
-  Refs.movieStorage.style.display = 'grid';
-  Refs.usersFilmsLibrary.style.display = 'none';
-
-  showPopularMoviesByDefault(initial);
-}
