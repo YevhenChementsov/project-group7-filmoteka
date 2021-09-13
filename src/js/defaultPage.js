@@ -6,14 +6,17 @@ import ShowModal from './modalCardOnOpen';
 import {renewPaginationMarkup} from './showMoviesByKeyWord'
 // import * as Pagination from './showMoviesByKeyWord';
 
-Refs.openHomepageButton.addEventListener('click', openHomepage);
+Refs.searchPageBtn.addEventListener('click', onOpenPreviousSearchPage);
 Refs.navigationButtons.addEventListener('click', isButtonActive);
 Refs.headerLinkToHomepage.addEventListener('click', openHomepageDirectly);
+Refs.openHomepageButton.addEventListener('click', openHomepageDirectly);
 
 const modal = new ShowModal();
 
-function openHomepage() {
+function onOpenPreviousSearchPage() {
+  Refs.openLibraryButton.classList.remove('active-link');
   Refs.browseLibraryButtons.style.display = 'none';
+  Refs.searchPageBtn.style.display = 'none';
   Refs.paginationContainer.style.display = 'flex';
   Refs.movieStorage.style.display = 'grid';
   Refs.usersFilmsLibrary.style.display = 'none';
@@ -74,3 +77,17 @@ export default async function showPopularMoviesByDefault(page) {
   modal.removeListener();
 }
 showPopularMoviesByDefault(initial);
+
+function openHomepageDirectly() {
+  console.log('yes');
+  Refs.searchPageBtn.removeEventListener('click', onOpenPreviousSearchPage);
+  Refs.searchPageBtn.style.display = 'none';
+
+  Refs.openLibraryButton.classList.remove('active-link');
+  Refs.browseLibraryButtons.style.display = 'none';
+  Refs.paginationContainer.style.display = 'flex';
+  Refs.movieStorage.style.display = 'grid';
+  Refs.usersFilmsLibrary.style.display = 'none';
+
+  showPopularMoviesByDefault(initial);
+}
