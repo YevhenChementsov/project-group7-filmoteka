@@ -103,6 +103,9 @@ export default class ShowModal {
       this.addMoviesToQueueLibrary(movieCardInfo, e);
       if (Refs.usersFilmsLibrary.classList.contains('library-is-open')) {
         showFilmsInQueue();
+        Refs.browseWatchedFilmsButton.classList.remove('active');
+        Refs.browseFilmsInQueueButton.classList.add('active');
+      
       }
       return;
     }
