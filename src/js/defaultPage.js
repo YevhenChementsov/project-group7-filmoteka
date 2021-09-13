@@ -34,11 +34,11 @@ var callback = function (entries) {
 var observer = new IntersectionObserver(callback, options);
 
 function onOpenPreviousSearchPage() {
-  const query = API.query;
+  // const query = API.query;
 
-  if (query.length === 0) {
-    return;
-  }
+  // if (query.length === 0) {
+  //   return;
+  // }
 
   Refs.openLibraryButton.classList.remove('active-link');
   Refs.browseLibraryButtons.style.display = 'none';
@@ -48,9 +48,9 @@ function onOpenPreviousSearchPage() {
   Refs.usersFilmsLibrary.style.display = 'none';
   Refs.usersFilmsLibrary.classList.remove('library-is-open');
   Refs.header.classList.remove('library');
-  const current = Module.page.current;
+  // const current = Module.page.current;
   // Pagination.renewPaginationMarkup();
-  showMoviesByKeyWord(query, current);
+  // showMoviesByKeyWord(query, current);
 }
 
 function isButtonActive(event) {
