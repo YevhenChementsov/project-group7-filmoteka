@@ -11,7 +11,10 @@ Refs.moveToFirstPageButton.addEventListener('click', setFirstPage);
 Refs.moveToLastPageButton.addEventListener('click', setLastPage);
 Refs.firstAdditionalButton.addEventListener('click', setFirstPage);
 
-let currentPage = 1;
+
+export let page = {
+  current: 1,
+}
 
 isPrevPageDisabled();
 isNextPageDisabled();
@@ -28,26 +31,26 @@ function setCurrentPage(event) {
     active.classList.remove('pgn-active');
   }
 
-  currentPage = Number(event.target.innerHTML);
+  page.current = Number(event.target.innerHTML);
   event.target.classList.add('pgn-active');
 
-  if (currentPage === Number(Refs.totalPagesButton.innerHTML)) {
+  if (page.current === Number(Refs.totalPagesButton.innerHTML)) {
     setLastPage();
   }
 
-  if (currentPage !== 1) {
+  if (page.current !== 1) {
     checkAvailablePrevButtons();
   }
-  if (currentPage !== Number(Refs.totalPagesButton.innerHTML)) {
+  if (page.current !== Number(Refs.totalPagesButton.innerHTML)) {
     checkAvailableNextButtons();
   }
 
   if (query.length > 0) {
-    showMoviesByKeyWord(query, currentPage);
+    showMoviesByKeyWord(query, page.current);
   } else {
-    showPopularMoviesByDefault(currentPage);
+    showPopularMoviesByDefault(page.current);
   }
-
+  console.log(page.current);
   isPrevPageDisabled();
   isNextPageDisabled();
   isSetFirstPageDisabled();
@@ -57,11 +60,11 @@ function setCurrentPage(event) {
 function setPrevPageAsCurrent(event) {
   event.preventDefault();
   const query = API.query;
-  if (currentPage <= 1) {
+  if (page.current <= 1) {
     return;
   }
 
-  if (currentPage !== 1) {
+  if (page.current !== 1) {
     checkAvailablePrevButtons();
   }
 
@@ -71,12 +74,12 @@ function setPrevPageAsCurrent(event) {
     active.parentNode.previousElementSibling?.firstElementChild.classList.add('pgn-active');
   }
 
-  currentPage -= 1;
+  page.current -= 1;
 
-  if (query.length) {
-    showMoviesByKeyWord(query, currentPage);
+  if (query.length > 0) {
+    showMoviesByKeyWord(query, page.current);
   } else {
-    showPopularMoviesByDefault(currentPage);
+    showPopularMoviesByDefault(page.current);
   }
   isPrevPageDisabled();
   isNextPageDisabled();
@@ -90,7 +93,7 @@ function setPrevPageAsCurrent(event) {
 function setNextPageAsCurrent(event) {
   event.preventDefault();
   const query = API.query;
-  if (currentPage === Number(Refs.totalPagesButton.innerHTML)) {
+  if (page.current === Number(Refs.totalPagesButton.innerHTML)) {
     Refs.prevPageButton.disabled = true;
     return;
   }
@@ -101,14 +104,14 @@ function setNextPageAsCurrent(event) {
     active.parentNode.nextElementSibling?.firstElementChild.classList.add('pgn-active');
   }
 
-  currentPage += 1;
+  page.current += 1;
 
   checkAvailableNextButtons();
 
   if (query.length > 0) {
-    showMoviesByKeyWord(query, currentPage);
+    showMoviesByKeyWord(query, page.current);
   } else {
-    showPopularMoviesByDefault(currentPage);
+    showPopularMoviesByDefault(page.current);
   }
   isPrevPageDisabled();
   isNextPageDisabled();
@@ -124,9 +127,9 @@ function checkAvailableNextButtons() {
 
   let paginationButtonsArray = [...paginationButtons];
 
-  if (currentPage <= Number(Refs.totalPagesButton.innerHTML) - 4) {
+  if (page.current <= Number(Refs.totalPagesButton.innerHTML) - 4) {
     let availableNextButtons = paginationButtonsArray.filter(
-      paginationButton => Number(paginationButton.innerHTML) >= currentPage,
+      paginationButton => Number(paginationButton.innerHTML) >= page.current,
     );
     if (availableNextButtons.length === 1) {
       const nextPaginationButtonsMarkup = createNextPaginationButtons();
@@ -140,7 +143,7 @@ function checkAvailablePrevButtons() {
 
   let paginationButtonsArray = [...paginationButtons];
   let availablePrevButtons = paginationButtonsArray.filter(
-    paginationButton => Number(paginationButton.innerHTML) <= currentPage,
+    paginationButton => Number(paginationButton.innerHTML) <= page.current,
   );
 
   if (availablePrevButtons.length === 1) {
@@ -152,7 +155,7 @@ function checkAvailablePrevButtons() {
 
 function createNextPaginationButtons() {
   let nextPaginationButtons = [];
-  for (let i = currentPage, size = currentPage + 5; i < size; i += 1) {
+  for (let i = page.current, size = page.current + 5; i < size; i += 1) {
     nextPaginationButtons.push(`<li><button class="pagination-button pgn-btn">${i}</button></li>`);
   }
   return nextPaginationButtons.join(' ');
@@ -160,14 +163,14 @@ function createNextPaginationButtons() {
 
 function createPrevPaginationButtons() {
   let prevPaginationButtons = [];
-  for (let i = currentPage, size = currentPage - 5; i > size; i -= 1) {
+  for (let i = page.current, size = page.current - 5; i > size; i -= 1) {
     prevPaginationButtons.push(`<li><button class="pagination-button pgn-btn">${i}</button></li>`);
   }
   return prevPaginationButtons.reverse().join(' ');
 }
 function createNewPaginationButtonsFromTheEnd() {
   let prevPaginationButtonsFromTheEnd = [];
-  for (let i = currentPage, size = currentPage - 5; i > size; i -= 1) {
+  for (let i = page.current, size = page.current - 5; i > size; i -= 1) {
     prevPaginationButtonsFromTheEnd.push(
       `<li><button class="pagination-button pgn-btn">${i}</button></li>`,
     );
@@ -185,32 +188,32 @@ function findFirstFilm() {
   return;
 }
 
-function isPrevPageDisabled() {
-  return currentPage === 1
+export function isPrevPageDisabled() {
+  return page.current === 1
     ? (Refs.prevPageButton.disabled = true)
     : (Refs.prevPageButton.disabled = false);
 }
-function isNextPageDisabled() {
-  return currentPage === Number(Refs.totalPagesButton.innerHTML)
+export function isNextPageDisabled() {
+  return page.current === Number(Refs.totalPagesButton.innerHTML)
     ? (Refs.nextPageButton.disabled = true)
     : (Refs.nextPageButton.disabled = false);
 }
 
-function isSetFirstPageDisabled() {
-  return currentPage === 1
+export function isSetFirstPageDisabled() {
+  return page.current === 1
     ? (Refs.moveToFirstPageButton.disabled = true)
     : (Refs.moveToFirstPageButton.disabled = false);
 }
 
-function isSetLastPageDisabled() {
-  return currentPage === Number(Refs.totalPagesButton.innerHTML)
+export function isSetLastPageDisabled() {
+  return page.current === Number(Refs.totalPagesButton.innerHTML)
     ? (Refs.moveToLastPageButton.disabled = true)
     : (Refs.moveToLastPageButton.disabled = false);
 }
 
-function setFirstPage() {
+export function setFirstPage() {
   const initialPage = API.initialPage;
-  currentPage = initialPage;
+  page.current = initialPage;
   const query = API.query;
 
   const active = document.querySelector('pgn-active');
@@ -226,9 +229,9 @@ function setFirstPage() {
   Refs.additionalPaginationButtonsBefore.style.display = 'none';
 
   if (query.length > 0) {
-    showMoviesByKeyWord(query, currentPage);
+    showMoviesByKeyWord(query, page.current);
   } else {
-    showPopularMoviesByDefault(currentPage);
+    showPopularMoviesByDefault(page.current);
   }
 
   renewPaginationMarkup();
@@ -239,11 +242,11 @@ function setFirstPage() {
   isPrevPageDisabled();
   isNextPageDisabled();
 
-  findFirstFilm();
+  // findFirstFilm();
 }
 function setLastPage() {
   const lastPage = Number(Refs.totalPagesButton.innerHTML);
-  currentPage = lastPage;
+  page.current = lastPage;
 
   Refs.additionalPaginationButtonsAfter.style.display = 'none';
   Refs.additionalPaginationButtonsBefore.style.display = 'flex';
@@ -262,3 +265,5 @@ function setLastPage() {
 
   findFirstFilm();
 }
+
+

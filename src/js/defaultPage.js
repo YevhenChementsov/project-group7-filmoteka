@@ -16,6 +16,7 @@ function openHomepage() {
   Refs.paginationContainer.style.display = 'flex';
   Refs.movieStorage.style.display = 'grid';
   Refs.usersFilmsLibrary.style.display = 'none';
+  Refs.usersFilmsLibrary.classList.remove('library-is-open');
   // Pagination.renewPaginationMarkup();
   // showPopularMoviesByDefault(initial);
 }
