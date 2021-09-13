@@ -4,7 +4,6 @@ import appendMoviesMarkUp from './markup';
 import API from './api-instance';
 import ShowModal from './modalCardOnOpen';
 import lazyLoad from './spinner1';
-import { renewPaginationMarkup } from './showMoviesByKeyWord';
 import * as Module from './pagination';
 import showMoviesByKeyWord, { renewPaginationMarkup } from './showMoviesByKeyWord';
 import {
