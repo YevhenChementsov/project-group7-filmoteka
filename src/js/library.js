@@ -31,6 +31,7 @@ async function makeLibraryVisible() {
   Refs.paginationContainer.style.display = 'none';
   Refs.movieStorage.style.display = 'none';
   Refs.usersFilmsLibrary.style.display = 'grid';
+  Refs.header.classList.add('library');
   Refs.usersFilmsLibrary.classList.add('library-is-open');
   await showWatchedFilms();
 }

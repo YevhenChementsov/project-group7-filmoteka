@@ -3,6 +3,7 @@ import movieCardTmpl from '../templates/card.hbs';
 import appendMoviesMarkUp from './markup';
 import API from './api-instance';
 import ShowModal from './modalCardOnOpen';
+import {renewPaginationMarkup} from './showMoviesByKeyWord'
 // import * as Pagination from './showMoviesByKeyWord';
 
 Refs.openHomepageButton.addEventListener('click', openHomepage);
@@ -17,6 +18,7 @@ function openHomepage() {
   Refs.movieStorage.style.display = 'grid';
   Refs.usersFilmsLibrary.style.display = 'none';
   Refs.usersFilmsLibrary.classList.remove('library-is-open');
+  Refs.header.classList.remove('library');
   // Pagination.renewPaginationMarkup();
   // showPopularMoviesByDefault(initial);
 }
@@ -32,6 +34,11 @@ function isButtonActive(event) {
 
 function openHomepageDirectly() {
   const activeLink = Refs.navigationButtons.lastElementChild.firstElementChild.classList.contains('active-link');
+
+  API.query = '';
+  Refs.inputSearch.value = "";
+  renewPaginationMarkup();
+  showPopularMoviesByDefault(initial);
   
   if (activeLink) {
     Refs.navigationButtons.lastElementChild.firstElementChild.classList.remove('active-link');
