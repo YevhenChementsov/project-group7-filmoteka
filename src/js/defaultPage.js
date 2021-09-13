@@ -13,13 +13,12 @@ Refs.headerLinkToHomepage.addEventListener('click', openHomepageDirectly);
 const modal = new ShowModal();
 
 var options = {
-  // root: document.querySelector('#scrollArea'),
-  rootMargin: '50px',
-  // threshold: 1.0,
+  rootMargin: '-50px',
 };
-var callback = function (entries, observer) {
+var callback = function (entries) {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
+      console.log(entry);
       const image = lazyLoad();
     }
   });
