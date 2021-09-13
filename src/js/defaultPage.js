@@ -4,11 +4,13 @@ import appendMoviesMarkUp from './markup';
 import API from './api-instance';
 import ShowModal from './modalCardOnOpen';
 import lazyLoad from './spinner1';
+import { renewPaginationMarkup } from './showMoviesByKeyWord';
 // import * as Pagination from './showMoviesByKeyWord';
 
-Refs.openHomepageButton.addEventListener('click', openHomepage);
+Refs.searchPageBtn.addEventListener('click', onOpenPreviousSearchPage);
 Refs.navigationButtons.addEventListener('click', isButtonActive);
 Refs.headerLinkToHomepage.addEventListener('click', openHomepageDirectly);
+Refs.openHomepageButton.addEventListener('click', openHomepageDirectly);
 
 const modal = new ShowModal();
 
@@ -25,11 +27,15 @@ var callback = function (entries) {
 };
 var observer = new IntersectionObserver(callback, options);
 
-function openHomepage() {
+function onOpenPreviousSearchPage() {
+  Refs.openLibraryButton.classList.remove('active-link');
   Refs.browseLibraryButtons.style.display = 'none';
+  Refs.searchPageBtn.style.display = 'none';
   Refs.paginationContainer.style.display = 'flex';
   Refs.movieStorage.style.display = 'grid';
   Refs.usersFilmsLibrary.style.display = 'none';
+  Refs.usersFilmsLibrary.classList.remove('library-is-open');
+  Refs.header.classList.remove('library');
   // Pagination.renewPaginationMarkup();
   // showPopularMoviesByDefault(initial);
 }
@@ -46,6 +52,11 @@ function isButtonActive(event) {
 function openHomepageDirectly() {
   const activeLink =
     Refs.navigationButtons.lastElementChild.firstElementChild.classList.contains('active-link');
+
+  API.query = '';
+  Refs.inputSearch.value = '';
+  renewPaginationMarkup();
+  showPopularMoviesByDefault(initial);
 
   if (activeLink) {
     Refs.navigationButtons.lastElementChild.firstElementChild.classList.remove('active-link');
@@ -84,3 +95,17 @@ export default async function showPopularMoviesByDefault(page) {
   modal.removeListener();
 }
 showPopularMoviesByDefault(initial);
+
+function openHomepageDirectly() {
+  console.log('yes');
+  Refs.searchPageBtn.removeEventListener('click', onOpenPreviousSearchPage);
+  Refs.searchPageBtn.style.display = 'none';
+
+  Refs.openLibraryButton.classList.remove('active-link');
+  Refs.browseLibraryButtons.style.display = 'none';
+  Refs.paginationContainer.style.display = 'flex';
+  Refs.movieStorage.style.display = 'grid';
+  Refs.usersFilmsLibrary.style.display = 'none';
+
+  showPopularMoviesByDefault(initial);
+}

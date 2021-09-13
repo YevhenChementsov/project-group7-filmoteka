@@ -35,7 +35,9 @@ const Refs = {
   additionalPaginationButtonsAfter: document.querySelector('.additional-btns-after'),
   additionalPaginationButtonsBefore: document.querySelector('.additional-btns-before'),
   firstAdditionalButton: document.querySelector('.first-button'),
+  header: document.querySelector('.header'),
   headerLinkToHomepage: document.getElementById('header__logo-title'),
+  searchPageBtn: document.querySelector('.search'),
 };
 
 export default Refs;
