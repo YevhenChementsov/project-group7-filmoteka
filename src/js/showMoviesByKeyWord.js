@@ -5,7 +5,12 @@ import appendMoviesMarkUp from './markup';
 import ShowModal from './modalCardOnOpen';
 import showPopularMoviesByDefault from './defaultPage';
 import * as Module from './pagination';
-import { isSetFirstPageDisabled, isSetLastPageDisabled, isPrevPageDisabled, isNextPageDisabled } from './pagination';
+import {
+  isSetFirstPageDisabled,
+  isSetLastPageDisabled,
+  isPrevPageDisabled,
+  isNextPageDisabled,
+} from './pagination';
 
 import { error, defaultModules } from '@pnotify/core';
 import '@pnotify/core/dist/PNotify.css';
@@ -45,16 +50,16 @@ export default async function showMoviesByKeyWord(query, page) {
       ],
     };
   });
-  
+
   if (page === API.initialPage) {
     Module.page.current = 1;
-    
+
     const active = document.querySelector('pgn-active');
-      if (active) {
+    if (active) {
       active.classList.remove('pgn-active');
     }
 
-      if (Refs.totalPagesButton.classList.contains('pgn-active')) {
+    if (Refs.totalPagesButton.classList.contains('pgn-active')) {
       Refs.totalPagesButton.classList.remove('pgn-active');
     }
 
@@ -73,11 +78,11 @@ export default async function showMoviesByKeyWord(query, page) {
   modal.setListener();
   modal.setMovies(moviesWithGenres);
   modal.removeListener();
-  // return moviesWithGenres;
+  return moviesWithGenres;
 }
 if (query.length > 0) {
   showMoviesByKeyWord(query, initial);
-} 
+}
 
 export function renewPaginationMarkup() {
   return (Refs.paginationList.innerHTML = `<li class="pagination-list-item">

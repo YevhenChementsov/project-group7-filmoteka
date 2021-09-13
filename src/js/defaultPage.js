@@ -20,7 +20,6 @@ var options = {
 var callback = function (entries) {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      console.log(entry);
       const image = lazyLoad();
     }
   });
@@ -71,7 +70,6 @@ function openHomepageDirectly() {
     Refs.navigationButtons.lastElementChild.firstElementChild.classList.remove('active-link');
     Refs.navigationButtons.firstElementChild.firstElementChild.classList.add('active-link');
   }
-  openHomepage();
 }
 
 const initial = API.initialPage;

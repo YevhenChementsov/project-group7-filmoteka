@@ -11,10 +11,9 @@ Refs.moveToFirstPageButton.addEventListener('click', setFirstPage);
 Refs.moveToLastPageButton.addEventListener('click', setLastPage);
 Refs.firstAdditionalButton.addEventListener('click', setFirstPage);
 
-
 export let page = {
   current: 1,
-}
+};
 
 isPrevPageDisabled();
 isNextPageDisabled();
@@ -50,7 +49,6 @@ function setCurrentPage(event) {
   } else {
     showPopularMoviesByDefault(page.current);
   }
-  console.log(page.current);
   isPrevPageDisabled();
   isNextPageDisabled();
   isSetFirstPageDisabled();
@@ -265,5 +263,3 @@ function setLastPage() {
 
   findFirstFilm();
 }
-
-

@@ -63,6 +63,7 @@ export async function showWatchedFilms() {
 
   const watchedMoviesMarkup = await makeMoviesCardsMarkup(parsedWatchedMovies);
   appendMoviesMarkUp(Refs.usersFilmsLibrary, watchedMoviesMarkup, movieCardTmpl);
+  await lazyLoad();
 }
 
 export async function showFilmsInQueue() {
@@ -84,6 +85,7 @@ export async function showFilmsInQueue() {
 
   const filmsInQueueMarkup = await makeMoviesCardsMarkup(parsedFilmsInQueue);
   appendMoviesMarkUp(Refs.usersFilmsLibrary, filmsInQueueMarkup, movieCardTmpl);
+  await lazyLoad();
 }
 
 async function makeMoviesCardsMarkup(movies) {
