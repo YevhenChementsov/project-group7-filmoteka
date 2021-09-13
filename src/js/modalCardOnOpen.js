@@ -52,6 +52,7 @@ export default class ShowModal {
         if (film.id === movieCardInfo[0].id && film.activeWatched) {
           modalBtns.firstElementChild.textContent = 'DELETE FROM WATCHED';
           modalBtns.firstElementChild.style.backgroundColor = '#FF6B01';
+          modalBtns.firstElementChild.style.color = '#FFFFFF';
           return;
         }
         return;
@@ -63,6 +64,7 @@ export default class ShowModal {
         if (film.id === movieCardInfo[0].id && film.activeQueue) {
           modalBtns.lastElementChild.textContent = 'DELETE FROM QUEUE';
           modalBtns.lastElementChild.style.backgroundColor = '#FF6B01';
+          modalBtns.lastElementChild.style.color = '#FFFFFF';
           return;
         }
         return;
@@ -111,6 +113,7 @@ export default class ShowModal {
   addMoviesToWatchedLibrary(movie, e) {
     e.target.textContent = 'DELETE FROM WATCHED';
     e.target.style.backgroundColor = '#FF6B01';
+    e.target.style.color = '#FFFFFF';
     const films = JSON.parse(localStorage.getItem('watchedMovies'));
 
     if (films === null || films.length < 1) {
@@ -130,6 +133,7 @@ export default class ShowModal {
   addMoviesToQueueLibrary(movie, e) {
     e.target.textContent = 'DELETE FROM QUEUE';
     e.target.style.backgroundColor = '#FF6B01';
+    e.target.style.color = '#FFFFFF';
     const films = JSON.parse(localStorage.getItem('queueMovies'));
 
     if (films === null || films.length < 1) {
@@ -148,7 +152,8 @@ export default class ShowModal {
 
   deleteMoviesFromWatchedLibrary(movie, e) {
     e.target.textContent = 'ADD TO WATCHED';
-    e.target.style.backgroundColor = 'white';
+    e.target.style.backgroundColor = '#FFFFFF';
+    e.target.style.color = '#000000';
     const movies = localStorage.getItem('watchedMovies');
     const films = JSON.parse(movies);
     const index = films.findIndex(film => film.id === movie.id);
@@ -159,7 +164,8 @@ export default class ShowModal {
 
   deleteMoviesFromQueueLibrary(movie, e) {
     e.target.textContent = 'ADD TO QUEUE';
-    e.target.style.backgroundColor = 'white';
+    e.target.style.backgroundColor = '#FFFFFF';
+    e.target.style.color = '#000000';
     const movies = localStorage.getItem('queueMovies');
     const films = JSON.parse(movies);
     const index = films.findIndex(film => film.id === movie.id);
