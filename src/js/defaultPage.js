@@ -94,7 +94,7 @@ export default async function showPopularMoviesByDefault(page) {
 showPopularMoviesByDefault(initial);
 
 async function openHomepageDirectly() {
-  Refs.searchPageBtn.removeEventListener('click', onOpenPreviousSearchPage);
+  // Refs.searchPageBtn.removeEventListener('click', onOpenPreviousSearchPage);
   Refs.searchPageBtn.style.display = 'none';
   Refs.header.classList.remove('library');
   Refs.openLibraryButton.classList.remove('active-link');
