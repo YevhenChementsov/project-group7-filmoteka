@@ -240,7 +240,7 @@ export function setFirstPage() {
   isPrevPageDisabled();
   isNextPageDisabled();
 
-  // findFirstFilm();
+  findFirstFilm();
 }
 function setLastPage() {
   const lastPage = Number(Refs.totalPagesButton.innerHTML);

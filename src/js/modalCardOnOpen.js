@@ -87,6 +87,10 @@ export default class ShowModal {
 
     if (e.target.innerText === 'DELETE FROM WATCHED') {
       this.deleteMoviesFromWatchedLibrary(movieCardInfo, e);
+      if (Refs.usersFilmsLibrary.classList.contains('library-is-open')) {
+        Refs.browseFilmsInQueueButton.classList.remove('active');
+        Refs.browseWatchedFilmsButton.classList.add('active');
+      }
       return;
     }
 
@@ -100,6 +104,10 @@ export default class ShowModal {
 
     if (e.target.innerText === 'DELETE FROM QUEUE') {
       this.deleteMoviesFromQueueLibrary(movieCardInfo, e);
+      if (Refs.usersFilmsLibrary.classList.contains('library-is-open')) {
+        Refs.browseWatchedFilmsButton.classList.remove('active');
+        Refs.browseFilmsInQueueButton.classList.add('active');
+      }
       return;
     }
 
@@ -109,7 +117,6 @@ export default class ShowModal {
         showFilmsInQueue();
         Refs.browseWatchedFilmsButton.classList.remove('active');
         Refs.browseFilmsInQueueButton.classList.add('active');
-      
       }
       return;
     }
@@ -164,7 +171,11 @@ export default class ShowModal {
     const index = films.findIndex(film => film.id === movie.id);
     const newFilms = films.splice(index, 1);
     localStorage.setItem('watchedMovies', JSON.stringify(films));
-    return showWatchedFilms();
+
+    if (Refs.usersFilmsLibrary.classList.contains('library-is-open')) {
+      return showWatchedFilms();
+    }
+    return;
   }
 
   deleteMoviesFromQueueLibrary(movie, e) {
@@ -176,7 +187,11 @@ export default class ShowModal {
     const index = films.findIndex(film => film.id === movie.id);
     const newFilms = films.splice(index, 1);
     localStorage.setItem('queueMovies', JSON.stringify(films));
-    return showFilmsInQueue();
+
+    if (Refs.usersFilmsLibrary.classList.contains('library-is-open')) {
+      return showFilmsInQueue();
+    }
+    return;
   }
 
   closeModalByClickBackdrop(e) {
