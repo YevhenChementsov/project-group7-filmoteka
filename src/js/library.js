@@ -67,8 +67,8 @@ export async function showWatchedFilms() {
 
   const parsedWatchedMovies = JSON.parse(savedWatchedMovies);
 
-  const watchedMoviesMarkup = await makeMoviesCardsMarkup(parsedWatchedMovies);
-  appendMoviesMarkUp(Refs.usersFilmsLibrary, watchedMoviesMarkup, movieCardTmpl);
+  // const watchedMoviesMarkup = await makeMoviesCardsMarkup(parsedWatchedMovies);
+  appendMoviesMarkUp(Refs.usersFilmsLibrary, parsedWatchedMovies, movieCardTmpl);
   await lazyLoad();
 }
 
@@ -89,37 +89,37 @@ export async function showFilmsInQueue() {
 
   const parsedFilmsInQueue = JSON.parse(savedFilmsInQueue);
 
-  const filmsInQueueMarkup = await makeMoviesCardsMarkup(parsedFilmsInQueue);
-  appendMoviesMarkUp(Refs.usersFilmsLibrary, filmsInQueueMarkup, movieCardTmpl);
+  // const filmsInQueueMarkup = await makeMoviesCardsMarkup(parsedFilmsInQueue);
+  appendMoviesMarkUp(Refs.usersFilmsLibrary, parsedFilmsInQueue, movieCardTmpl);
   await lazyLoad();
 }
 
-async function makeMoviesCardsMarkup(movies) {
-  if (movies.length === 0) {
-    return;
-  }
+// async function makeMoviesCardsMarkup(movies) {
+//   if (movies.length === 0) {
+//     return;
+//   }
 
-  const genres = await fetchGenres;
-  const moviesCardsMarkup = movies.map(movie => {
-    if (!movie) {
-      return;
-    }
-    const { genre_ids } = movie;
-    return {
-      ...movie,
-      year: movie.release_date
-        ? movie.release_date.split('-')[0]
-        : movie.first_air_date.split('-')[0],
-      genre_ids: [
-        ...genres
-          .filter(({ id }) => genre_ids.includes(id))
-          .map(({ name }) => name)
-          .slice(0, 3),
-      ],
-    };
-  });
-  return moviesCardsMarkup;
-}
+//   const genres = await fetchGenres;
+//   const moviesCardsMarkup = movies.map(movie => {
+//     if (!movie) {
+//       return;
+//     }
+//     const { genre_ids } = movie;
+//     return {
+//       ...movie,
+//       year: movie.release_date
+//         ? movie.release_date.split('-')[0]
+//         : movie.first_air_date.split('-')[0],
+//       genre_ids: [
+//         ...genres
+//           .filter(({ id }) => genre_ids.includes(id))
+//           .map(({ name }) => name)
+//           .slice(0, 3),
+//       ],
+//     };
+//   });
+//   return moviesCardsMarkup;
+// }
 
 function showLibraryIsEmpty() {
   Refs.usersFilmsLibrary.classList.remove('grid-list');

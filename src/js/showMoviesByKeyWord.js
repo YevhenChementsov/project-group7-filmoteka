@@ -42,7 +42,9 @@ export default async function showMoviesByKeyWord(query, page) {
     const { genre_ids } = movie;
     return {
       ...movie,
-      genre_ids: [
+      vote: movie.vote_average,
+      year: movie.release_date ? movie.release_date.split('-')[0] : '',
+      genres: [
         ...genres
           .filter(({ id }) => genre_ids.includes(id))
           .map(({ name }) => name)
