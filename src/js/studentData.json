@@ -40,5 +40,12 @@
         "role": "Developer",
         "urlLinkedin":"https://www.linkedin.com/in/",
         "urlGithub":"https://github.com/hooliganfromtroya"
+    },
+    {
+        "id":"7",
+        "name":"Ilya Zaporjec",
+        "role": "Developer",
+        "urlLinkedin":"https://www.linkedin.com/in/илья-запорожец-2341591a3",
+        "urlGithub":"https://github.com/Ilya-Zaporjec"
     }
    ]
