@@ -41,6 +41,7 @@ function onOpenPreviousSearchPage() {
   // }
 
   Refs.openLibraryButton.classList.remove('active-link');
+  Refs.navigationButtons.firstElementChild.firstElementChild.classList.add('active-link');
   Refs.browseLibraryButtons.style.display = 'none';
   Refs.searchPageBtn.style.display = 'none';
   Refs.paginationContainer.style.display = 'flex';
@@ -108,11 +109,11 @@ async function openHomepageDirectly() {
 
   API.query = '';
   Refs.inputSearch.value = '';
-
+  
   if (activeLink) {
     Refs.navigationButtons.lastElementChild.firstElementChild.classList.remove('active-link');
     Refs.navigationButtons.firstElementChild.firstElementChild.classList.add('active-link');
-  }
+  } else {Refs.navigationButtons.firstElementChild.firstElementChild.classList.add('active-link');}
 
   await showPopularMoviesByDefault(initial);
   Module.page.current = 1;
@@ -128,6 +129,7 @@ async function openHomepageDirectly() {
 
   Refs.additionalPaginationButtonsAfter.style.display = 'flex';
   Refs.additionalPaginationButtonsBefore.style.display = 'none';
+  Refs.usersFilmsLibrary.classList.remove('library-is-open');
 
   renewPaginationMarkup();
   isSetFirstPageDisabled();

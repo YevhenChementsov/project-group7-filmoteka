@@ -35,6 +35,12 @@ async function makeLibraryVisible() {
   Refs.usersFilmsLibrary.style.display = 'grid';
   Refs.header.classList.add('library');
   Refs.usersFilmsLibrary.classList.add('library-is-open');
+  const active = document.querySelector('.active');
+
+  if (active) {
+    active.classList.remove('active');
+  }
+  Refs.browseWatchedFilmsButton.classList.add('active');
   await showWatchedFilms();
   await lazyLoad();
 }
