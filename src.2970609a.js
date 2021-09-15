@@ -86,4 +86,4 @@ var o;function t(o){return(t="function"==typeof Symbol&&"symbol"==typeof Symbol.
 },{"./api-instance":"alI7"}],"Focm":[function(require,module,exports) {
 "use strict";require("/js/refs"),require("./sass/main.scss"),require("./js/students"),require("./js/pagination"),require("./js/components/header/header"),require("./js/defaultPage"),require("./js/theme-switch"),require("./js/slider"),require("./js/trailers"),require("./js/back-to-top-btn"),require("./js/genres"),require("./js/modalCardOnOpen"),require("./js/library"),require("./js/spinner1");
 },{"/js/refs":"VyiV","./sass/main.scss":"clu1","./js/students":"anyE","./js/pagination":"o8lo","./js/components/header/header":"AHzE","./js/defaultPage":"sw8j","./js/theme-switch":"JIhF","./js/slider":"wzuc","./js/trailers":"aFca","./js/back-to-top-btn":"lZt3","./js/genres":"pQa5","./js/modalCardOnOpen":"DCkv","./js/library":"BfNj","./js/spinner1":"fzDl"}]},{},["Focm"], null)
-//# sourceMappingURL=/project-group7-filmoteka/src.648c54c7.js.map
+//# sourceMappingURL=/project-group7-filmoteka/src.2970609a.js.map
