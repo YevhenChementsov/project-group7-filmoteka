@@ -2,7 +2,7 @@ import Refs from './refs';
 import movieCardTmpl from '../templates/card.hbs';
 import appendMoviesMarkUp from './markup';
 import API from './api-instance';
-import ShowModal from './modalCardOnOpen';
+import {moviesCards} from './modalCardOnOpen';
 import lazyLoad from './spinner1';
 import * as Module from './pagination';
 import showMoviesByKeyWord, { renewPaginationMarkup } from './showMoviesByKeyWord';
@@ -18,8 +18,6 @@ Refs.searchPageBtn.addEventListener('click', onOpenPreviousSearchPage);
 Refs.navigationButtons.addEventListener('click', isButtonActive);
 Refs.headerLinkToHomepage.addEventListener('click', openHomepageDirectly);
 Refs.openHomepageButton.addEventListener('click', openHomepageDirectly);
-
-const modal = new ShowModal();
 
 var options = {
   rootMargin: '-50px',
@@ -88,9 +86,9 @@ export default async function showPopularMoviesByDefault(page) {
   await lazyLoad();
   const images = document.querySelectorAll('.js-movie__image');
   images.forEach(image => observer.observe(image));
-  modal.setListener();
-  modal.setMovies(moviesWithGenres);
-  modal.removeListener();
+  moviesCards.push(...moviesWithGenres)
+  return moviesWithGenres;
+
 }
 showPopularMoviesByDefault(initial);
 
@@ -109,7 +107,7 @@ async function openHomepageDirectly() {
 
   API.query = '';
   Refs.inputSearch.value = '';
-  
+
   if (activeLink) {
     Refs.navigationButtons.lastElementChild.firstElementChild.classList.remove('active-link');
     Refs.navigationButtons.firstElementChild.firstElementChild.classList.add('active-link');
