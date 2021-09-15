@@ -1,0 +1,51 @@
+[
+    {
+        "id":"1",
+        "name":"Pavlo Oliinyk",
+        "role": "Team Lead",
+        "urlLinkedin":"https://www.linkedin.com/in/pavlo-oliinyk-7565b1211/",
+        "urlGithub":"https://github.com/PavloOliinyk"
+    },
+    {
+        "id":"2",
+        "name":"Viusal Rahmanov",
+        "role": "Developer",
+        "urlLinkedin":"https://www.linkedin.com/in/вюсал-рахманов-94031b210",
+        "urlGithub":"https://github.com/Rahmanov-Viusal"
+    },
+    {
+        "id":"3",
+        "name":"Alexander Tkachuk",
+        "role": "Developer",
+        "urlLinkedin":"https://www.linkedin.com/in/tkauchuk",
+        "urlGithub":"https://github.com/tkauchuk"
+    },
+    {
+        "id":"4",
+        "name":"Yevhen Chementsov",
+        "role": "Developer",
+        "urlLinkedin":"https://www.linkedin.com/in/yevhen-chementsov-06654a21b",
+        "urlGithub":"https://github.com/YevhenChementsov"
+    },
+    {
+        "id":"5",
+        "name":"Герасимова Евгения",
+        "role": "Developer",
+        "urlLinkedin":"https://www.linkedin.com/in/",
+        "urlGithub":"https://github.com/zeka2021"
+    },
+    {
+        "id":"6",
+        "name":"Andrey Marchuk",
+        "role": "Developer",
+        "urlLinkedin":"https://www.linkedin.com/in/",
+        "urlGithub":"https://github.com/hooliganfromtroya"
+    },
+    {
+        "id":"7",
+        "name":"Ilya Zaporjec",
+        "role": "Developer",
+        "urlLinkedin":"https://www.linkedin.com/in/илья-запорожец-2341591a3",
+        "urlGithub":"https://github.com/Ilya-Zaporjec"
+    }
+   ]

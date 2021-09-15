@@ -1,0 +1,228 @@
+.backdrop-team {
+  padding: 20px;
+}
+.modal-open {
+  overflow: hidden;
+}
+.modal-close-btn {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 10px;
+  right: 10px;
+  z-index: 100;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-bottom: 8px;
+
+  padding: 0;
+  // border-color: var();
+  border-radius: 50%;
+  border: none;
+
+  background-color: var(--primaryTextColor);
+  transition: background-color 250ms linear;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 2px;
+  }
+  @media screen and (min-width: 1064px) {
+    margin-bottom: 10px;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: var(--accentColor);
+  }
+}
+.modal-close-btn__icon {
+  fill: var(--secondaryTextColor);
+  transition: fill 250ms linear;
+
+  .modal-close-btn:hover &,
+  .modal-close-btn:focus & {
+    fill: var(--primaryTextColor);
+  }
+}
+
+.team-modal {
+  position: relative;
+}
+
+.students-container {
+  position: relative;
+  width: 100%;
+  padding: 30px;
+  // overflow: scroll;
+  border-radius: 30px;
+  border: 2px solid var(--accentColor);
+  background: linear-gradient(
+    45deg,
+    rgb(207, 154, 184) 26%,
+    rgb(86, 181, 184) 100%,
+    rgb(208, 242, 237) 100%
+  );
+}
+
+.students-list {
+  display: flex;
+  flex-wrap: wrap;
+
+  margin-left: -10px;
+  margin-top: -10px;
+}
+
+.students-item {
+  flex-basis: calc(100% / 2 - 10px);
+
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.students-photo {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 50%;
+  background-size: cover;
+
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    transform: scale(1.2);
+    border: 2px solid var(--accentColor);
+  }
+}
+
+.photo-1 {
+  background-image: url('../images/team/pavlo_oliinyk.jpeg');
+}
+
+.photo-2 {
+  background-image: url('../images/team/viusal_rahmanov.jpeg');
+}
+
+.photo-3 {
+  background-image: url('../images/team/alexander_tkachuk.jpeg');
+}
+
+.photo-4 {
+  background-image: url('../images/team/yevhen_chementsov.jpg');
+}
+
+.photo-5 {
+  background-image: url('../images/team/evgenia_gerasimova.jpeg');
+}
+
+.photo-6 {
+  background-image: url('../images/team/andrey_marchuk.jpeg');
+}
+
+.photo-7 {
+  background-image: url('../images/team/ilya_zaporogec.jpeg');
+}
+
+.students-name {
+  font-size: 10px;
+  color: var(--primaryTextColor);
+}
+
+.students-role {
+  color: var(--accentColor);
+  font-size: 10px;
+}
+
+.students-name,
+.students-role {
+  margin-bottom: 5px;
+}
+
+.students-content {
+  padding: 5px;
+  text-align: center;
+}
+
+.students-linkedin,
+.students-github {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    transform: scale(1.2);
+    background-color: var(--accentColor);
+  }
+}
+
+.students-linkedin {
+  margin-right: 5px;
+
+  background-size: cover;
+  background-image: url('../images/team/linkedin.png');
+}
+
+.students-github {
+  background-size: cover;
+  background-image: url('../images/team/github.png');
+}
+
+@media screen and (min-width: 480px) {
+  .team-modal {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    overflow: hidden;
+  }
+
+  .students-item {
+    flex-basis: calc(100% / 3 - 10px);
+  }
+
+  .students-photo {
+    width: 100px;
+    height: 100px;
+  }
+
+  .students-name,
+  .students-role {
+    font-size: 18px;
+  }
+
+  .students-linkedin,
+  .students-github {
+    width: 22px;
+    height: 22px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .team-modal {
+    max-width: 800px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .students-photo {
+    width: 120px;
+    height: 120px;
+  }
+
+  .students-name,
+  .students-role {
+    font-size: 24px;
+  }
+
+  .students-linkedin,
+  .students-github {
+    width: 26px;
+    height: 26px;
+  }
+}

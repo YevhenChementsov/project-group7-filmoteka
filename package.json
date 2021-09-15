@@ -3,26 +3,37 @@
   "version": "1.1.0",
   "description": "",
   "main": "index.js",
-  "homepage": "https://PavloOliinyk.github.io/project-group7-filmoteka",
+  "homepage": "https://pavlooliinyk.github.io/project-group7-filmoteka",
   "scripts": {
     "dev": "parcel src/*.html",
     "build": "parcel build src/*.html --public-url /project-group7-filmoteka/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PavloOliinyk/project-group7-filmoteka.git"
+    "url": "git+https://github.com/pavlooliinyk/project-group7-filmoteka.git"
   },
   "keywords": [],
   "author": "Oliinyk Pavlo <oliinyk.pavlo@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/PavloOliinyk/project-group7-filmoteka/issues"
+    "url": "https://github.com/pavlooliinyk/project-group7-filmoteka/issues"
   },
   "devDependencies": {
+    "@glidejs/glide": "^3.4.1",
+    "basiclightbox": "^5.0.4",
+    "lodash.debounce": "^4.0.8",
     "parcel-bundler": "^1.12.5",
     "parcel-plugin-handlebars-precompile": "^1.0.2",
     "parcel-plugin-nuke-dist": "^1.0.1",
     "posthtml-include": "^1.6.2",
-    "sass": "^1.32.8"
+    "sass": "^1.32.8",
+    "spin.js": "^4.1.1"
+  },
+  "dependencies": {
+    "@pnotify/core": "^5.2.0",
+    "@pnotify/mobile": "^5.2.0",
+    "basiclightbox": "^5.0.4",
+    "pnotify": "^5.2.0",
+    "vanilla-back-to-top": "^7.2.1"
   }
 }

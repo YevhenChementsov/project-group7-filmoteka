@@ -1,0 +1,245 @@
+.backdrop {
+  padding: 20px;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  z-index: 100;
+  background-color: rgba(180, 180, 209, 0.7);
+  overflow-y: scroll;
+
+  @media screen and (min-width: 768px) {
+    padding: 231px 75px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    padding: 100px 71px;
+  }
+}
+
+.open-modal {
+  overflow: hidden;
+}
+
+.backdrop.is-hidden .modal {
+  transform: scale(0.5);
+}
+
+.backdrop.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.modal {
+  max-width: 280px;
+  min-height: 958px;
+  padding: 48px 20px 41px;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scale(1);
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 12%), 0 1px 1px rgb(0 0 0 / 14%), 0 2px 1px rgb(0 0 0 / 20%);
+  border-radius: 4px;
+
+  @media screen and (min-width: 768px) {
+    max-width: 618px;
+    padding: 41px 29px;
+    min-height: 562px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    max-width: 882px;
+    min-height: 568px;
+    padding: 50px 30px 40px;
+  }
+}
+.button-close {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+
+  height: 30px;
+  width: 30px;
+  padding: 0;
+
+  box-sizing: border-box;
+
+  border-radius: 50px;
+  border: 0.5px solid white;
+  background-color: white;
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--btn-accent-color);
+  }
+
+  &:hover svg {
+    stroke: var(--primaryTextColor);
+  }
+
+  &-icon {
+    width: 100%;
+    height: 100%;
+
+    stroke: black;
+  }
+}
+
+.modal-card {
+  &-button {
+    display: flex;
+    // justify-content: space-evenly;
+
+    margin-top: 20px;
+
+    // @media screen and (min-width: 768px) {
+    //   justify-content: space-between;
+    // }
+
+    // @media screen and (min-width: 1024px) {
+    //   justify-content: space-around;
+    // }
+  }
+
+  &-img {
+    width: 100%;
+    height: 478px;
+    @media screen and (min-width: 1024px) {
+      width: 396px;
+    }
+  }
+  @media screen and (min-width: 768px) {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+.description {
+  margin-top: 30px;
+  width: 240px;
+
+  font-family: var(--primaryFont);
+  color: black;
+  &-tittle {
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 1.16;
+
+    font-family: Roboto;
+  }
+  &-mainInfo {
+    margin-top: 20px;
+    list-style: none;
+
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.15;
+
+    &-items {
+      margin-top: 10px;
+
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      grid-auto-rows: 16px;
+      grid-gap: 12px;
+
+      // @media screen and (min-width: 768px) {
+      //   width: 50%;
+      // }
+
+      &_cat {
+        // width: 70px;
+        display: flex;
+
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 1.15;
+
+        color: #8c8c8c;
+      }
+      &_vote {
+        padding: 1px 10px;
+        margin-right: 5px;
+        border-radius: 5px;
+        color: var(--primaryTextColor);
+        background-color: var(--accentColor);
+      }
+      &_value {
+        width: 150px;
+      }
+      &_count {
+        margin-left: 5px;
+      }
+    }
+  }
+  &-secondary--title {
+    margin-top: 20px;
+
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.15;
+  }
+  &-logline {
+    margin-top: 10px;
+
+    font-family: var(--primaryFont);
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.18;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 264px;
+    margin-left: 30px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    width: 398px;
+  }
+}
+.button-modal {
+  width: 112px;
+  height: 44px;
+  margin-right: 15px;
+
+  border-radius: 5px;
+  border: 0.5px solid black;
+
+  font-family: var(--primaryFont);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.15;
+
+  cursor: pointer;
+
+  background-color: white;
+
+  &:focus,
+  &:hover {
+    background-color: var(--accentColor);
+    border-color: var(--accentColor);
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 125px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    width: 136px;
+  }
+}
+.fill {
+  object-fit: cover;
+  height: 100%;
+}
+
+.modal__image {
+  width: 100%;
+  height: 100%;
+}

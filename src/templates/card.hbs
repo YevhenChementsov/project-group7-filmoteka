@@ -1,0 +1,45 @@
+{{#each this}}
+  <li class='js-movie__item grid-item' data-id={{id}}>
+
+    <span class='loader'></span>
+
+    {{#if poster_path}}
+      <img
+        class='js-movie__image'
+        loading='lazy'
+        src='https://image.tmdb.org/t/p/original/{{poster_path}}'
+        alt='{{title}}{{name}}'
+        data-id='{{id}}'
+      />
+    {{else}}
+      <img
+        class='js-movie__image'
+        loading='lazy'
+        src='https://www.prokerala.com/movies/assets/img/no-poster-available.jpg'
+        alt='No Poster Available'
+        data-id='{{id}}'
+      />
+    {{/if}}
+
+    {{#if original_title}}
+      <h3 class='js-movie__title grid-title' data-id={{id}}>{{original_title}}{{original_name}}</h3>
+    {{else}}
+      <h3 class='js-movie__title grid-title' data-id={{id}}>"No Title"</h3>
+    {{/if}}
+
+    {{#if genres}}
+      <p class='js-movie__genre grid-genre'>{{genres}}</p>
+    {{else}}
+      <p class='js-movie__genre grid-genre'>"No Genres"</p>
+    {{/if}}
+
+    <span class='js-movie__span'>|</span>
+
+    {{#if year}}
+      <p class='js-movie__year grid-year'>{{year}}</p>
+    {{else}}
+      <p class='js-movie__year grid-year'>"No Date"</p>
+    {{/if}}
+
+  </li>
+{{/each}}

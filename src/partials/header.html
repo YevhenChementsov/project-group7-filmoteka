@@ -1,0 +1,56 @@
+<header class="header">
+  <div class="container">
+    <div class="theme__switch">
+      <svg class="theme__switch-icon" role="img" aria-label="Иконка солнца">
+        <use href="./images/sprite.svg#sun"></use>
+      </svg>
+
+      <div class="theme__switch-control">
+        <input
+          class="theme__switch-toggle"
+          type="checkbox"
+          name="theme"
+          id="theme__switch-toggle"
+          aria-label="Переключить между тёмной и светлой темой"
+        />
+        <label aria-hidden="true" class="theme__switch-track" for="theme__switch-toggle"> </label>
+        <div aria-hidden="true" class="theme__switch-marker"></div>
+      </div>
+
+      <svg class="theme__switch-icon" aria-label="Иконка луны">
+        <use href="./images/sprite.svg#moon"></use>
+      </svg>
+    </div>
+  </div>
+  <div class="container toolbar">
+    <div class="header__content">
+      <div class="header__logo">
+        <a id="header__logo-title" href="#">
+          <img src="./images/header_images/film.svg" alt="logo" />
+          <span class="header__logo-name">Filmoteka </span>
+        </a>
+      </div>
+      <ul class="header__navigation">
+        <li class="">
+          <a class="open-homepage active-link" href="#">HOME</a>
+        </li>
+        <li>
+          <a class="open-library-button" href="#">MY LIBRARY</a>
+        </li>
+      </ul>
+    </div>
+    <div class="header__search">
+      <div class="header__search-content">
+        <input type="text" placeholder="Поиск фильмов" />
+        <button><span class="material-icons"> search </span></button>
+      </div>
+      <div class="header__search-info">
+        <p class="error">Movies not found. Enter correct query...</p>
+      </div>
+    </div>
+    <div class="header__actions">
+      <button class="button watched-btn active">Watched</button>
+      <button class="button queue-btn">Queue</button>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,47 @@
+<div class='modal-card-img'>
+  <span class='modal-loader'></span>
+  <img
+    class='js-movie__image modal__image'
+    loading='lazy'
+    src='https://image.tmdb.org/t/p/original/{{poster_path}}'
+    alt={{title}}
+    data-id={{id}}
+  />
+</div>
+<div class='description'>
+  <h2 class='description-tittle' data-id={{id}}>{{original_title}}</h2>
+  <ul class='description-mainInfo'>
+    <li class='description-mainInfo-items'>
+      <span class='description-mainInfo-items_cat'>Vote/Votes</span>
+      <span class='description-mainInfo-items_value'><span
+          class='description-mainInfo-items_vote'
+        >{{vote_average}}</span><span>/</span><span
+          class='description-mainInfo-items_count'
+        >{{vote_count}}</span></span>
+
+    </li>
+    <li class='description-mainInfo-items'>
+      <span class='description-mainInfo-items_cat'>Popularity</span>
+      <span class='description-mainInfo-items_value'>{{popularity}}</span>
+
+    </li>
+    <li class='description-mainInfo-items'>
+      <span class='description-mainInfo-items_cat'>Original Title</span>
+      <span class='description-mainInfo-items_value'> {{original_title}}</span>
+
+    </li>
+    <li class='description-mainInfo-items'>
+      <span class='description-mainInfo-items_cat'>Genres</span>
+      <span class='description-mainInfo-items_value'> {{genres}}</span>
+
+    </li>
+  </ul>
+  <h3 class='description-secondary--title'>ABOUT</h3>
+  <p class='description-logline'>
+    {{overview}}
+  </p>
+  <div class='modal-card-button'>
+    <button type='button' class='button-modal watched' data-value='watched'>ADD TO WATCHED</button>
+    <button type='button' class='button-modal queue' data-value='queue'>ADD TO QUEUE</button>
+  </div>
+</div>
