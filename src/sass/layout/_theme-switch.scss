@@ -36,11 +36,12 @@ body.dark-theme {
 
 .theme__switch {
   display: flex;
-  z-index: 1;
-  position: absolute;
+  justify-content: flex-end;
+  // z-index: 1;
+  // position: absolute;
 
-  top: 15px;
-  right: 15px;
+  // top: 15px;
+  // right: 15px;
 
   &-icon {
     color: currentColor;
