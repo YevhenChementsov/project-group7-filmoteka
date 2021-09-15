@@ -4,13 +4,8 @@
 }
 
 .search-btn {
-  color: #000000;
-  border-radius: 5px;
-  border: 0.5px solid black;
-  background-color: antiquewhite;
-}
-
-.search-btn:hover {
   background-color: var(--btn-accent-color);
   color: var(--primaryTextColor);
+  border-radius: 5px;
+  border: 0.5px solid black;
 }
