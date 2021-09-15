@@ -2,9 +2,9 @@ import API from './api-instance';
 import Refs from './refs';
 import cardTemplate from '../templates/card';
 import appendMoviesMarkUp from './markup';
-import ShowModal from './modalCardOnOpen';
 import showPopularMoviesByDefault from './defaultPage';
 import * as Module from './pagination';
+import {moviesCards} from './modalCardOnOpen';
 import {
   isSetFirstPageDisabled,
   isSetLastPageDisabled,
@@ -20,10 +20,10 @@ import '@pnotify/core/dist/BrightTheme.css';
 import { showWatchedFilms } from './library';
 defaultModules.set(PNotifyMobile, {});
 import lazyLoad from './spinner1';
+import {moviesCards as movieFilms} from './modalCardOnOpen';
 
 const initial = API.initialPage;
 const query = API.query;
-const modal = new ShowModal();
 
 export default async function showMoviesByKeyWord(query, page) {
   const movies = (await API.fetchMoviesByKeyWord(query, page)) || [];
@@ -77,9 +77,7 @@ export default async function showMoviesByKeyWord(query, page) {
 
   appendMoviesMarkUp(Refs.movieStorage, moviesWithGenres, cardTemplate);
   await lazyLoad();
-  modal.setListener();
-  modal.setMovies(moviesWithGenres);
-  modal.removeListener();
+  movieFilms.push(...moviesWithGenres);
   return moviesWithGenres;
 }
 if (query.length > 0) {
