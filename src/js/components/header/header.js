@@ -43,11 +43,11 @@ const searchHandler = async event => {
 
   const movies = await showMoviesByKeyWord(query, page);
 
-  if (!movies) {
-    Refs.searchError.classList.add('visible');
-  } else {
-    Refs.searchError.classList.remove('visible');
-  }
+  // if (!movies) {
+  //   Refs.searchError.classList.add('visible');
+  // } else {
+  //   Refs.searchError.classList.remove('visible');
+  // }
 };
 
 Refs.inputSearch.addEventListener('input', debounce(searchHandler, 300));
