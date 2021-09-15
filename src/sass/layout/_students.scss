@@ -1,5 +1,5 @@
 .backdrop-team {
-  padding: 20px;
+  padding: 10px 0;
 }
 .modal-open {
   overflow: hidden;
@@ -51,6 +51,7 @@
 
 .team-modal {
   position: relative;
+  margin: 0 auto;
 }
 
 .students-container {
@@ -177,10 +178,6 @@
 
 @media screen and (min-width: 480px) {
   .team-modal {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
     overflow: hidden;
   }
 
